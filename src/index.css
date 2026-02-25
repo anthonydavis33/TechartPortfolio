@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+::selection {
+  background: rgba(99, 102, 241, 0.35);
+}
+
+/* Subtle background grid */
+.bg-grid {
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0);
+  background-size: 26px 26px;
+}
+
+/* Nice focus outlines */
+a, button {
+  outline: none;
+}
+a:focus-visible, button:focus-visible {
+  box-shadow: 0 0 0 3px rgba(99,102,241,0.45);
+  border-radius: 12px;
+}
