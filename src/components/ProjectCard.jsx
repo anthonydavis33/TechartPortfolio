@@ -18,15 +18,13 @@ function SmallLink({ href, icon: Icon, label }) {
 }
 
 export default function ProjectCard({ project }) {
-  const base = import.meta.env.BASE_URL;
-  
   return (
     <div className="glass-card rounded-2xl shadow-soft overflow-hidden">
       {/* Thumbnail */}
       <Link to={`/projects/${project.slug}`} className="block">
         <div className="relative">
           <img
-            src={`${base}${project.thumbnail}`}
+            src={asset(project.thumbnail)}
             alt={`${project.title} thumbnail`}
             className="h-40 w-full object-cover border-b border-neutral-800"
             loading="lazy"

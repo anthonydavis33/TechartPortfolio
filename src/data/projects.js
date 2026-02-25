@@ -75,7 +75,7 @@ export const projects = [
     slug: "layered-wear-damage-shader",
     title: "Shader System: Layered Wear & Damage",
     tag: "Shaders",
-    thumbnail: "/projects/shader-wear.jpg",
+    thumbnail: "projects/shader-wear.jpg",
     short:
       "Layered, art-directable wear/dirt/damage framework with debug views and performance-minded controls.",
     stack: ["Unreal Materials", "HLSL", "Material Functions"],
@@ -98,14 +98,14 @@ export const projects = [
         "Reduced shader complexity for artists using the system.",
         "Simplified debugging for both art and tech art."
       ],
-      media: [{ type: "image", src: "/projects/shader-wear.jpg", caption: "Layer mask progression example." }],
+      media: [{ type: "image", src: "projects/shader-wear.jpg", caption: "Layer mask progression example." }],
       sections: [
         {
           eyebrow: "Workflow",
           title: "Batch validation with safe previews",
           text: "Artists can see what will change before the operation runs. Logs are generated per batch for auditing.",
           bullets: ["Preview-first UX", "Clear failure reasons", "Per-asset actions"],
-          gifSrc: "/projects/gifs/validation-preview.gif",
+          gifSrc: "projects/gifs/validation-preview.gif",
           caption: "Preview mode with validation results and fix actions."
         },
         {
@@ -113,7 +113,7 @@ export const projects = [
           title: "One-click setup for new assets",
           text: "Automates repetitive steps and enforces naming and folder rules without blocking iteration.",
           bullets: ["Defaults that match production", "Fast iteration", "Guardrails not gates"],
-          gifSrc: "/projects/gifs/one-click-setup.gif"
+          gifSrc: "projects/gifs/one-click-setup.gif"
         }
       ]
     }
@@ -123,7 +123,7 @@ export const projects = [
     slug: "pcg-workflow",
     title: "World-Building / PCG Workflow",
     tag: "PCG + UX",
-    thumbnail: "/projects/pcg-workflow.jpg",
+    thumbnail: "projects/pcg-workflow.jpg",
     short:
       "Scalable PCG patterns and tooling for predictable world dressing, fast iteration, and profiling discipline.",
     stack: ["Unreal PCG", "Editor Tools", "Profiling"],
@@ -146,14 +146,14 @@ export const projects = [
         "Faster iteration for artists and tech art.",
         "Clearer performance expectations on large scenes."
       ],
-      media: [{ type: "image", src: "/projects/pcg-workflow.jpg", caption: "PCG layout + debugging overview." }],
+      media: [{ type: "image", src: "projects/pcg-workflow.jpg", caption: "PCG layout + debugging overview." }],
       sections: [
         {
           eyebrow: "Workflow",
           title: "Batch validation with safe previews",
           text: "Artists can see what will change before the operation runs. Logs are generated per batch for auditing.",
           bullets: ["Preview-first UX", "Clear failure reasons", "Per-asset actions"],
-          gifSrc: "/projects/gifs/validation-preview.gif",
+          gifSrc: "projects/gifs/validation-preview.gif",
           caption: "Preview mode with validation results and fix actions."
         },
         {
@@ -161,7 +161,7 @@ export const projects = [
           title: "One-click setup for new assets",
           text: "Automates repetitive steps and enforces naming and folder rules without blocking iteration.",
           bullets: ["Defaults that match production", "Fast iteration", "Guardrails not gates"],
-          gifSrc: "/projects/gifs/one-click-setup.gif"
+          gifSrc: "projects/gifs/one-click-setup.gif"
         }
       ]
     }

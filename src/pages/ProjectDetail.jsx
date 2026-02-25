@@ -73,7 +73,7 @@ function TextGifBlock({ item, flip = false }) {
         <div className="rounded-2xl border border-neutral-800 overflow-hidden bg-neutral-950/40">
           <div className="h-64 md:h-72 w-full">
             <img
-              src={`${base}${item.gifSrc}`}
+              src={asset(item.gifSrc)}
               alt={item.alt || item.title}
               className="h-full w-full object-cover"
               loading="lazy"
@@ -173,7 +173,7 @@ export default function ProjectDetail() {
                 className="glass-card rounded-2xl shadow-soft"
               >
                 <img
-                  src={`${base}${m.src}`}
+                  src={asset(m.src)}
                   alt={m.caption || project.title}
                   className="w-full rounded-xl border border-neutral-800 object-cover"
                 />

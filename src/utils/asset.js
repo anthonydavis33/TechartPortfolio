@@ -1,0 +1,1 @@
+export const asset = (path) => new URL(path, import.meta.env.BASE_URL).toString();
