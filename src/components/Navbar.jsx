@@ -1,10 +1,10 @@
 import { Mail, ExternalLink } from "lucide-react";
 
 const nav = [
-  { href: "#work", label: "Work" },
-  { href: "#skills", label: "Skills" },
-  { href: "#case-studies", label: "Case Studies" },
-  { href: "#contact", label: "Contact" }
+  { href: "/#work", label: "Work" },
+  { href: "/#skills", label: "Skills" },
+  { href: "/#case-studies", label: "Case Studies" },
+  { href: "/#contact", label: "Contact" }
 ];
 
 export default function Navbar() {
