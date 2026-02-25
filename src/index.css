@@ -25,3 +25,12 @@ a:focus-visible, button:focus-visible {
   box-shadow: 0 0 0 3px rgba(99,102,241,0.45);
   border-radius: 12px;
 }
+
+/* Glassmorphism card */
+.glass-card {
+  background: rgba(10, 10, 10, 0.55);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}

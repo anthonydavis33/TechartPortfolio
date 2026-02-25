@@ -10,7 +10,7 @@ function LinkButton({ href, icon: Icon, label }) {
       href={href}
       target="_blank"
       rel="noreferrer"
-      className="inline-flex items-center gap-2 rounded-xl border border-neutral-700 bg-neutral-900 px-3 py-2 text-sm text-neutral-100 hover:border-indigo-500/60 hover:bg-neutral-900/70 transition"
+      className="inline-flex items-center gap-2 rounded-xl border border-neutral-700 bg-neutral-900 px-3 py-2 text-sm text-neutral-100 hover:border-accent-500/60 hover:bg-neutral-900/70 transition"
     >
       <Icon className="h-4 w-4" />
       {label}
@@ -21,7 +21,7 @@ function LinkButton({ href, icon: Icon, label }) {
 function BulletBlock({ title, items }) {
   if (!items?.length) return null;
   return (
-    <div className="rounded-2xl border border-neutral-800 bg-neutral-950/40 p-6 shadow-soft">
+    <div className="glass-card rounded-2xl shadow-soft">
       <div className="text-sm font-semibold text-neutral-100">{title}</div>
       <ul className="mt-3 space-y-2 text-sm text-neutral-300 list-disc pl-5">
         {items.map((x) => (
@@ -43,14 +43,14 @@ export default function ProjectDetail() {
   if (!project) {
     return (
       <div className="mx-auto max-w-4xl px-5 py-16">
-        <div className="rounded-2xl border border-neutral-800 bg-neutral-950/40 p-6 shadow-soft">
+        <div className="glass-card rounded-2xl shadow-soft">
           <div className="text-neutral-50 font-semibold">Project not found</div>
           <p className="mt-2 text-neutral-300 text-sm">
             That link doesn’t match a project slug.
           </p>
           <Link
             to="/"
-            className="mt-4 inline-flex items-center gap-2 rounded-xl bg-indigo-600/90 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-600 transition"
+            className="mt-4 inline-flex items-center gap-2 rounded-xl bg-accent-600/90 px-4 py-2 text-sm font-semibold text-white hover:bg-accent-600 transition"
           >
             <ArrowLeft className="h-4 w-4" />
             Back home
@@ -109,7 +109,7 @@ export default function ProjectDetail() {
           {cs.media.map((m) => (
             <div
               key={m.src}
-              className="rounded-2xl border border-neutral-800 bg-neutral-950/40 p-4 shadow-soft"
+              className="glass-card rounded-2xl shadow-soft"
             >
               <img
                 src={m.src}

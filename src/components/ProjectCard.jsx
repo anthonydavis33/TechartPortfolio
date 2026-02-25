@@ -9,7 +9,7 @@ function SmallLink({ href, icon: Icon, label }) {
       target="_blank"
       rel="noreferrer"
       onClick={(e) => e.stopPropagation()}
-      className="inline-flex items-center gap-2 rounded-lg border border-neutral-800 bg-neutral-900/40 px-3 py-2 text-xs text-neutral-200 hover:border-indigo-500/50 hover:bg-neutral-900/70 transition"
+      className="inline-flex items-center gap-2 rounded-lg border border-neutral-800 bg-neutral-900/40 px-3 py-2 text-xs text-neutral-200 hover:border-accent-500/50 hover:bg-neutral-900/70 transition"
     >
       <Icon className="h-4 w-4" />
       {label}
@@ -19,7 +19,7 @@ function SmallLink({ href, icon: Icon, label }) {
 
 export default function ProjectCard({ project }) {
   return (
-    <div className="rounded-2xl border border-neutral-800 bg-neutral-950/40 shadow-soft overflow-hidden">
+    <div className="glass-card rounded-2xl shadow-soft overflow-hidden">
       {/* Thumbnail */}
       <Link to={`/projects/${project.slug}`} className="block">
         <div className="relative">
@@ -70,7 +70,7 @@ export default function ProjectCard({ project }) {
         <div className="mt-4 flex flex-wrap items-center gap-2">
           <Link
             to={`/projects/${project.slug}`}
-            className="inline-flex items-center gap-2 rounded-lg bg-indigo-600/90 px-3 py-2 text-xs font-semibold text-white hover:bg-indigo-600 transition"
+            className="inline-flex items-center gap-2 rounded-lg bg-accent-600/90 px-3 py-2 text-xs font-semibold text-white hover:bg-accent-600 transition"
           >
             <ArrowUpRight className="h-4 w-4" />
             Deep dive

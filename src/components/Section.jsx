@@ -4,7 +4,7 @@ export default function Section({ id, eyebrow, title, children }) {
       <div className="mx-auto w-full max-w-6xl px-5">
         <div className="mb-8">
           {eyebrow && (
-            <div className="text-xs font-semibold tracking-widest text-indigo-300/90 uppercase">
+            <div className="text-xs font-semibold tracking-widest text-accent-400/90 uppercase">
               {eyebrow}
             </div>
           )}
