@@ -3,7 +3,7 @@ export const projects = [
     slug: "character-pipeline-tooling",
     title: "Character Lookdev Tool",
     tag: "Tools + Pipeline",
-    thumbnail: "/projects/DioramaOnly.png",
+    thumbnail: "projects/DioramaOnly.png",
     short:
       "Editor tooling that accelerates character look-dev with validation, batch fixes, and artist-first UX.",
     stack: ["Unreal Engine", "Python", "Blueprints", "Perforce"],
@@ -35,7 +35,7 @@ export const projects = [
       ],
       media: [
         // You can add more later
-        { type: "image", src: "/projects/DioramaOnly.png", caption: "Tool UI + batch validation output." }
+        { type: "image", src: "projects/DioramaOnly.png", caption: "Tool UI + batch validation output." }
       ],
       sections: [
         {
@@ -43,7 +43,7 @@ export const projects = [
           title: "Automated Gear Loading with Material Validation",
           text: "Selecting a gear set automatically loads the associated armor data after import. The tool performs material validation at load time and applies a high-visibility fallback shader when a reference is invalid, making errors immediately obvious to artists and preventing broken assets from silently entering the pipeline.",
           bullets: ["In-game lighting at a glance", "Clear visual error signaling for invalid materials", "Prevents silent pipeline failures"],
-          gifSrc: "/projects/gifs/Diorama1.gif",
+          gifSrc: "projects/gifs/Diorama1.gif",
           caption: "Quick preview for immediate validation and lookdev"
         },
         {
@@ -51,21 +51,21 @@ export const projects = [
           title: "Biome-Based Diorama Previews with Environment Modifiers",
           text: "Each diorama is designed to be easily extensible per biome and includes environment modifiers for post-process color grading. This allows artists to preview armor under multiple in-game lighting scenarios and environmental conditions, reducing lighting-related surprises during integration.",
           bullets: ["Modular diorama setup per biome", "In-game lighting and post-process parity", "Fast visual validation across environments"],
-          gifSrc: "/projects/gifs/Diorama2.gif"
+          gifSrc: "projects/gifs/Diorama2.gif"
         },
         {
           eyebrow: "Race and Gender Look",
           title: "Dynamic Race & Gender Cycling",
           text: "The tool supports cycling through available races and genders, automatically resolving and loading the correct skeletal meshes for each combination. This ensures armor sets are validated across all supported character variants without manual setup or repeated scene configuration.",
           bullets: ["Automatic skeletal mesh resolution", "One-click validation across character variants", "Reduces setup friction for cross-race testing"],
-          gifSrc: "/projects/gifs/Diorama3.gif"
+          gifSrc: "projects/gifs/Diorama3.gif"
         },
         {
           eyebrow: "Data Editing",
           title: "Variant Preview with Direct Data Editing",
           text: "Designers and artists can preview player-facing customization options directly within the tool and adjust variant data in place. This enables rapid iteration on armor sets and variants while maintaining alignment with gameplay data, reducing back-and-forth between content creation and data tuning.",
           bullets: ["In-context preview of design customizations", "Direct editing of variant data", "Faster iteration on armor set variants"],
-          gifSrc: "/projects/gifs/Diorama4.gif"
+          gifSrc: "projects/gifs/Diorama4.gif"
         }
       ]
     }
