@@ -18,16 +18,71 @@ function LinkButton({ href, icon: Icon, label }) {
   );
 }
 
-function BulletBlock({ title, items }) {
+function BulletBlock({ title, items, className = "" }) {
   if (!items?.length) return null;
   return (
-    <div className="glass-card rounded-2xl shadow-soft">
+    <div className={`glass-card rounded-2xl p-6 shadow-soft ${className}`}>
       <div className="text-sm font-semibold text-neutral-100">{title}</div>
       <ul className="mt-3 space-y-2 text-sm text-neutral-300 list-disc pl-5">
         {items.map((x) => (
           <li key={x}>{x}</li>
         ))}
       </ul>
+    </div>
+  );
+}
+
+function TextGifBlock({ item, flip = false }) {
+  // Fixed media size for consistency:
+  // - container: same height
+  // - image: object-cover
+  return (
+    <div className="glass-card rounded-2xl p-6 shadow-soft">
+      <div className={`grid gap-6 items-center md:grid-cols-2 ${flip ? "md:[&>*:first-child]:order-2" : ""}`}>
+        {/* Text */}
+        <div>
+          {item.eyebrow ? (
+            <div className="text-xs font-semibold tracking-widest text-accent-400/90 uppercase">
+              {item.eyebrow}
+            </div>
+          ) : null}
+
+          <h3 className="mt-2 text-xl font-semibold text-neutral-50">
+            {item.title}
+          </h3>
+
+          {item.text ? (
+            <p className="mt-3 text-sm text-neutral-300 leading-relaxed">
+              {item.text}
+            </p>
+          ) : null}
+
+          {item.bullets?.length ? (
+            <ul className="mt-4 space-y-2 text-sm text-neutral-300 list-disc pl-5">
+              {item.bullets.map((b) => (
+                <li key={b}>{b}</li>
+              ))}
+            </ul>
+          ) : null}
+        </div>
+
+        {/* GIF / Media */}
+        <div className="rounded-2xl border border-neutral-800 overflow-hidden bg-neutral-950/40">
+          <div className="h-64 md:h-72 w-full">
+            <img
+              src={item.gifSrc}
+              alt={item.alt || item.title}
+              className="h-full w-full object-cover"
+              loading="lazy"
+            />
+          </div>
+          {item.caption ? (
+            <div className="px-4 py-3 text-sm text-neutral-400 border-t border-neutral-800">
+              {item.caption}
+            </div>
+          ) : null}
+        </div>
+      </div>
     </div>
   );
 }
@@ -63,81 +118,92 @@ export default function ProjectDetail() {
   const cs = project.caseStudy || {};
 
   return (
-    <div className="mx-auto max-w-6xl px-5 py-10">
-      <Link
-        to="/#work"
-        className="inline-flex items-center gap-2 text-sm text-neutral-300 hover:text-white transition"
-      >
-        <ArrowLeft className="h-4 w-4" />
-        Back to Projects
-      </Link>
+    <div className="min-h-screen bg-grid">
+      <div className="mx-auto max-w-6xl px-5 py-10">
+        <Link
+          to="/#work"
+          className="inline-flex items-center gap-2 text-sm text-neutral-300 hover:text-white transition"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Back to Projects
+        </Link>
 
-      <div className="mt-6 rounded-3xl border border-neutral-800 bg-neutral-950/60 p-7 md:p-10 shadow-soft">
-        <div className="inline-flex items-center rounded-full border border-neutral-800 bg-neutral-900/40 px-3 py-1 text-xs text-neutral-200">
-          {project.tag}
+        <div className="mt-6 rounded-3xl border border-neutral-800 bg-neutral-950/60 p-7 md:p-10 shadow-soft">
+          <div className="inline-flex items-center rounded-full border border-neutral-800 bg-neutral-900/40 px-3 py-1 text-xs text-neutral-200">
+            {project.tag}
+          </div>
+
+          <h1 className="mt-3 text-3xl md:text-4xl font-semibold text-neutral-50">
+            {project.title}
+          </h1>
+
+          <p className="mt-3 text-neutral-300 leading-relaxed max-w-3xl">
+            {cs.overview || project.short}
+          </p>
+
+          <div className="mt-5 flex flex-wrap gap-2">
+            {project.stack?.map((s) => (
+              <span
+                key={s}
+                className="rounded-full border border-neutral-800 bg-neutral-900/40 px-3 py-1 text-xs text-neutral-200"
+              >
+                {s}
+              </span>
+            ))}
+          </div>
+
+          <div className="mt-6 flex flex-wrap gap-2">
+            <LinkButton href={project.links?.demo} icon={ArrowUpRight} label="Demo" />
+            <LinkButton href={project.links?.writeup} icon={FileText} label="Write-up" />
+            <LinkButton href={project.links?.repo} icon={Github} label="Code" />
+          </div>
         </div>
 
-        <h1 className="mt-3 text-3xl md:text-4xl font-semibold text-neutral-50">
-          {project.title}
-        </h1>
+        {/* Media */}
+        {cs.media?.length ? (
+          <div className="mt-6 grid gap-4 md:grid-cols-2">
+            {cs.media.map((m) => (
+              <div
+                key={m.src}
+                className="glass-card rounded-2xl shadow-soft"
+              >
+                <img
+                  src={m.src}
+                  alt={m.caption || project.title}
+                  className="w-full rounded-xl border border-neutral-800 object-cover"
+                />
+                {m.caption && (
+                  <div className="mt-3 text-sm text-neutral-400">{m.caption}</div>
+                )}
+              </div>
+            ))}
+          </div>
+        ) : null}
 
-        <p className="mt-3 text-neutral-300 leading-relaxed max-w-3xl">
-          {cs.overview || project.short}
-        </p>
-
-        <div className="mt-5 flex flex-wrap gap-2">
-          {project.stack?.map((s) => (
-            <span
-              key={s}
-              className="rounded-full border border-neutral-800 bg-neutral-900/40 px-3 py-1 text-xs text-neutral-200"
-            >
-              {s}
-            </span>
-          ))}
+        {/* Case Study Blocks */}
+        <div className="mt-6 grid gap-4 md:grid-cols-3">
+          <BulletBlock title="Problem" items={cs.problem} className="case-gradient-problem" />
+          <BulletBlock title="Solution" items={cs.solution} className="case-gradient-solution" />
+          <BulletBlock title="Impact" items={cs.impact} className="case-gradient-impact" />
         </div>
 
-        <div className="mt-6 flex flex-wrap gap-2">
-          <LinkButton href={project.links?.demo} icon={ArrowUpRight} label="Demo" />
-          <LinkButton href={project.links?.writeup} icon={FileText} label="Write-up" />
-          <LinkButton href={project.links?.repo} icon={Github} label="Code" />
+        {/* Sections of text and gif */}
+        {cs.sections?.length ? (
+          <div className="mt-6 space-y-4">
+            {cs.sections.map((item, i) => (
+              <TextGifBlock key={item.title} item={item} flip={i % 2 === 1} />
+            ))}
+          </div>
+        ) : null}
+
+        {/* Next steps placeholder */}
+        <div className="mt-6 rounded-2xl border border-neutral-800 bg-neutral-900/30 p-6">
+          <div className="text-sm font-semibold text-neutral-100">What I’d improve next</div>
+          <p className="mt-2 text-sm text-neutral-300 leading-relaxed">
+            Add a short section here when you want: edge cases, what you’d refactor,
+            perf wins still on the table, or “if we had another sprint…”.
+          </p>
         </div>
-      </div>
-
-      {/* Media */}
-      {cs.media?.length ? (
-        <div className="mt-6 grid gap-4 md:grid-cols-2">
-          {cs.media.map((m) => (
-            <div
-              key={m.src}
-              className="glass-card rounded-2xl shadow-soft"
-            >
-              <img
-                src={m.src}
-                alt={m.caption || project.title}
-                className="w-full rounded-xl border border-neutral-800 object-cover"
-              />
-              {m.caption && (
-                <div className="mt-3 text-sm text-neutral-400">{m.caption}</div>
-              )}
-            </div>
-          ))}
-        </div>
-      ) : null}
-
-      {/* Case Study Blocks */}
-      <div className="mt-6 grid gap-4 md:grid-cols-3">
-        <BulletBlock title="Problem" items={cs.problem} />
-        <BulletBlock title="Solution" items={cs.solution} />
-        <BulletBlock title="Impact" items={cs.impact} />
-      </div>
-
-      {/* Next steps placeholder */}
-      <div className="mt-6 rounded-2xl border border-neutral-800 bg-neutral-900/30 p-6">
-        <div className="text-sm font-semibold text-neutral-100">What I’d improve next</div>
-        <p className="mt-2 text-sm text-neutral-300 leading-relaxed">
-          Add a short section here when you want: edge cases, what you’d refactor,
-          perf wins still on the table, or “if we had another sprint…”.
-        </p>
       </div>
     </div>
   );
