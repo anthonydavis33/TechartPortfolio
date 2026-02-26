@@ -1,15 +1,7 @@
-import { useEffect, useRef } from "react";
-import Prism from "prismjs";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 export default function CodeBlock({ title, code, language = "cpp" }) {
-  const ref = useRef(null);
-
-  useEffect(() => {
-    if (ref.current) {
-      Prism.highlightAllUnder(ref.current);
-    }
-  }, [code]);
-
   return (
     <div className="glass-card rounded-2xl p-5 shadow-soft">
       {title && (
@@ -18,11 +10,29 @@ export default function CodeBlock({ title, code, language = "cpp" }) {
         </div>
       )}
 
-      <pre ref={ref} className="overflow-x-auto rounded-xl border border-neutral-800 bg-neutral-950/70 p-4 text-sm">
-        <code className={`language-${language}`}>
-{code}
-        </code>
-      </pre>
+      <div className="rounded-xl border border-neutral-800 overflow-hidden">
+        <SyntaxHighlighter
+          language={language}
+          style={vscDarkPlus}
+          customStyle={{
+            margin: 0,
+            background: "rgba(3, 7, 18, 0.75)", // dark, fits your glass theme
+            padding: "16px",
+            fontSize: "0.875rem",
+            lineHeight: 1.6
+          }}
+          codeTagProps={{
+            style: {
+              fontFamily:
+                'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace'
+            }
+          }}
+          wrapLongLines={false}
+          showLineNumbers={false}
+        >
+          {code}
+        </SyntaxHighlighter>
+      </div>
     </div>
   );
 }
