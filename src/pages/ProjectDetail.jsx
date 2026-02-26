@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { projects } from "../data/projects";
 import { ArrowLeft, Github, FileText, ArrowUpRight } from "lucide-react";
 import { asset } from "../utils/asset";
+import CodeBlock from "../components/CodeBlock";
 
 function LinkButton({ href, icon: Icon, label }) {
   if (!href) return null;
@@ -196,6 +197,12 @@ export default function ProjectDetail() {
             ))}
           </div>
         ) : null}
+
+        <CodeBlock
+          title={cs.codeTitle}
+          code={cs.code}
+          language="cpp"
+        />
       </div>
     </div>
   );

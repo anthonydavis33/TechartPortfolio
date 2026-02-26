@@ -69,50 +69,202 @@ export const projects = [
   },
 
   {
-    slug: "layered-wear-damage-shader",
-    title: "Shader System: Layered Wear & Damage",
-    tag: "Shaders",
-    thumbnail: "projects/shader-wear.jpg",
+    slug: "cloth-lod-tool",
+    title: "Automated Cloth LOD Tool",
+    tag: "Automation + Tooling", 
+    thumbnail: "projects/AutomatedClothLODButton.png",
     short:
-      "Layered, art-directable wear/dirt/damage framework with debug views and performance-minded controls.",
-    stack: ["Unreal Materials", "HLSL", "Material Functions"],
+      "One-click editor tool that propagates cloth setup from LOD0 across all skeletal mesh LODs, eliminating repetitive manual setup.",
+    stack: ["Automation", "Pipeline", "C++"],
     links: { demo: "", repo: "", writeup: "" },
     caseStudy: {
       overview:
-        "A reusable material framework that keeps art direction flexible while staying performant and debuggable.",
+        "An editor-side automation tool that propagates cloth setup from the source LOD to all derived LODs on a skeletal mesh. Designed to eliminate repetitive manual work, reduce integration errors, and ensure consistent cloth configuration across production assets.",
       problem: [
-        "Wear/damage needed to be consistent across many assets without unique authoring.",
-        "Artists needed control without touching low-level shader graphs.",
-        "Hard to diagnose cost/incorrect masks without tooling."
+        "Adding cloth data to each LOD required repetitive manual setup for every skeletal mesh.",
+        "Manual propagation was error-prone and easy to miss during large content pushes.",
+        "Artists were spending significant time on mechanical setup instead of visual iteration."
       ],
+
       solution: [
-        "Composed layered material functions with clear inputs/outputs.",
-        "Exposed parameters in a controlled way (instances + functions).",
-        "Added debug visualization options for masks/cost sanity checks."
+        "Built an editor utility that propagates cloth setup from LOD0 to all derived LODs with a single action.",
+        "Automatically assigns clothing assets per section based on naming conventions and validation checks.",
+        "Integrated safety checks and logging to prevent invalid assignments and surface issues immediately."
       ],
+
       impact: [
-        "Faster iteration and more consistent results across assets.",
-        "Reduced shader complexity for artists using the system.",
-        "Simplified debugging for both art and tech art."
+        "Saved ~15 minutes of setup time per skeletal mesh for artists.",
+        "Eliminated common cloth assignment errors across LODs.",
+        "Improved iteration speed and consistency across large character content batches."
       ],
-      media: [{ type: "image", src: "projects/shader-wear.jpg", caption: "Layer mask progression example." }],
+      media: [],
       sections: [
         {
-          eyebrow: "Workflow",
-          title: "Batch validation with safe previews",
-          text: "Artists can see what will change before the operation runs. Logs are generated per batch for auditing.",
-          bullets: ["Preview-first UX", "Clear failure reasons", "Per-asset actions"],
-          gifSrc: "projects/gifs/validation-preview.gif",
-          caption: "Preview mode with validation results and fix actions."
-        },
-        {
-          eyebrow: "UX",
-          title: "One-click setup for new assets",
-          text: "Automates repetitive steps and enforces naming and folder rules without blocking iteration.",
-          bullets: ["Defaults that match production", "Fast iteration", "Guardrails not gates"],
-          gifSrc: "projects/gifs/one-click-setup.gif"
+          eyebrow: "Easy Button",
+          title: "Cloth LOD Automation in the Skeletal Mesh Editor",
+          text: "Added a one-click action to the Skeletal Mesh Editor that automatically generates and assigns cloth data for all remaining LODs after artists complete setup on LOD0. This removes repetitive manual steps from the workflow and significantly reduces setup time and error potential during character asset production.",
+          bullets: [
+            "Adds a one-click action directly in the Skeletal Mesh Editor after LOD0 cloth setup.",
+            "Automatically generates and assigns clothing data for all remaining LODs.",
+            "Eliminates repetitive manual steps and reduces setup errors across character assets."
+          ],
+          gifSrc: "projects/AutomatedClothLODButton.png",
         }
-      ]
+      ],
+      code: `void FGameSystemsEditorPlugin::PerformAutomatedClothLODTool() const
+{
+    FSkeletalMeshClothBuildParams Params;
+    Params.bRemapParameters = true;
+    Params.bRemoveFromMesh = false;
+    Params.LodIndex = 0;
+
+    UAssetEditorSubsystem* AssetEditorSubsystem = GEditor->GetEditorSubsystem<UAssetEditorSubsystem>();
+    if (!AssetEditorSubsystem)
+    {
+        UE_LOG(LogTemp, Warning, TEXT("AssetEditorSubsystem is not available!"));
+        return;
+    }
+
+    TArray<UObject*> EditedAssets = AssetEditorSubsystem->GetAllEditedAssets();
+
+    TArray<USkeletalMesh*> EditedSkeletalMeshes;
+    for (UObject* EditedAsset : EditedAssets)
+    {
+        if (IsValid(EditedAsset))
+        {
+            if (USkeletalMesh* SkeletalMesh = Cast<USkeletalMesh>(EditedAsset))
+            {
+                if (IsValid(SkeletalMesh))
+                {
+                    EditedSkeletalMeshes.Add(SkeletalMesh);
+                }
+            }
+        }
+    }
+
+    if (EditedSkeletalMeshes.Num() > 1)
+    {
+        UE_LOG(LogTemp, Warning, TEXT("Multiple SkeletalMeshes are being edited. Only one should be open at a time."));
+        FNotificationInfo Info(FText::FromString("Please edit only one SkeletalMesh at a time to use this tool."));
+        Info.ExpireDuration = 5.0f;
+        Info.bUseLargeFont = true;
+        Info.Image = FCoreStyle::Get().GetBrush(TEXT("MessageLog.Warning"));
+        FSlateNotificationManager::Get().AddNotification(Info);
+        return;
+    }
+
+    for (UObject* EditedAsset : EditedAssets)
+    {
+        if (IsValid(EditedAsset))
+        {
+            if (USkeletalMesh* SkeletalMesh = Cast<USkeletalMesh>(EditedAsset))
+            {
+                if (IsValid(SkeletalMesh))
+                {
+                    if (UPhysicsAsset* PhysicsAsset = SkeletalMesh->GetPhysicsAsset())
+                    {
+                        if (IsValid(PhysicsAsset))
+                        {
+                            Params.PhysicsAsset = TSoftObjectPtr<UPhysicsAsset>(
+                                FSoftObjectPath(PhysicsAsset->GetPathName())
+                            );
+                        }
+                    }
+                    else
+                    {
+                        UE_LOG(LogTemp, Warning, TEXT("No Physics Asset found for the SkeletalMesh."));
+                        Params.PhysicsAsset.Reset();
+                    }
+
+                    FSkeletalMeshModel* ImportedModel = SkeletalMesh->GetImportedModel();
+                    if (!ImportedModel)
+                    {
+                        UE_LOG(LogTemp, Warning, TEXT("Invalid skeletal mesh model data!"));
+                        return;
+                    }
+
+                    const TArray<FSkeletalMaterial>& Materials = SkeletalMesh->GetMaterials();
+                    int32 SourceSectionIndex = -1;
+                    UClothingAssetBase* SourceClothingAsset = nullptr;
+
+                    // Step 1: Find the source clothing asset from LOD0
+                    const FSkeletalMeshLODModel& LODModel = ImportedModel->LODModels[0];
+                    for (int32 SectionIndex = 0; SectionIndex < LODModel.Sections.Num(); ++SectionIndex)
+                    {
+                        const FSkelMeshSection& Section = LODModel.Sections[SectionIndex];
+
+                        if (!Materials.IsValidIndex(Section.MaterialIndex) ||
+                            Materials[Section.MaterialIndex].MaterialSlotName.ToString().Contains(TEXT("DRVR")))
+                        {
+                            Params.SourceSection = SectionIndex;
+                            continue;
+                        }
+
+                        if (!Materials.IsValidIndex(Section.MaterialIndex) ||
+                            Materials[Section.MaterialIndex].MaterialSlotName.ToString().Contains(TEXT("Body")))
+                        {
+                            continue;
+                        }
+
+                        if (Section.HasClothingData())
+                        {
+                            FGuid ClothingAssetGuid = Section.ClothingData.AssetGuid;
+                            UClothingAssetBase* ClothingAsset = SkeletalMesh->GetClothingAsset(ClothingAssetGuid);
+
+                            if (IsValid(ClothingAsset))
+                            {
+                                UE_LOG(LogTemp, Log, TEXT("Found clothing asset: %s"), *ClothingAsset->GetName());
+                                Params.TargetAsset = ClothingAsset;
+                            }
+                            else
+                            {
+                                UE_LOG(LogTemp, Warning, TEXT("Section has clothing data but no valid asset."));
+                            }
+                        }
+                    }
+
+                    UE_LOG(LogTemp, Log, TEXT("Source clothing asset found: %s"), *SourceClothingAsset->GetName());
+
+                    // Step 2: Iterate through LODs and assign new clothing assets
+                    for (int32 LodIndex = 1; LodIndex < SkeletalMesh->GetLODNum(); ++LodIndex)
+                    {
+                        Params.TargetLod = LodIndex;
+
+                        for (int32 SectionIndex = 0; SectionIndex < ImportedModel->LODModels[LodIndex].Sections.Num(); ++SectionIndex)
+                        {
+                            FClothingSystemEditorInterfaceModule& ClothingEditorModule =
+                                FModuleManager::LoadModuleChecked<FClothingSystemEditorInterfaceModule>("ClothingSystemEditorInterface");
+
+                            UClothingAssetFactoryBase* AssetFactory = ClothingEditorModule.GetClothingAssetFactory();
+
+                            // Check material slot naming to determine valid cloth targets
+                            if (Materials.IsValidIndex(ImportedModel->LODModels[LodIndex].Sections[SectionIndex].MaterialIndex) &&
+                                (Materials[ImportedModel->LODModels[LodIndex].Sections[SectionIndex].MaterialIndex]
+                                     .MaterialSlotName.ToString().Contains(TEXT("DRVR")) ||
+                                 Materials[ImportedModel->LODModels[LodIndex].Sections[SectionIndex].MaterialIndex]
+                                     .MaterialSlotName.ToString().Contains(TEXT("Body"))))
+                            {
+                                continue;
+                            }
+
+                            AssetFactory->ImportLodToClothing(SkeletalMesh, Params);
+
+                            if (SectionIndex != Params.SourceSection)
+                            {
+                                if (UClothingAssetBase* TargetAssetPtr = Params.TargetAsset.Get())
+                                {
+                                    ApplyClothing(TargetAssetPtr, Params.TargetLod, SectionIndex, LodIndex);
+                                }
+                            }
+                        }
+                    }
+
+                    SkeletalMesh->MarkPackageDirty();
+                }
+            }
+        }
+    }
+}`
     }
   },
 
