@@ -23,7 +23,7 @@ function BulletBlock({ title, items, className = "" }) {
   if (!items?.length) return null;
   return (
     <div className={`glass-card rounded-2xl p-6 shadow-soft ${className}`}>
-      <div className="text-sm font-semibold text-neutral-100">{title}</div>
+      <div className="text-sm font-semibold text-neutral-50 tracking-wide">{title}</div>
       <ul className="mt-3 space-y-2 text-sm text-neutral-300 list-disc pl-5">
         {items.map((x) => (
           <li key={x}>{x}</li>
@@ -72,7 +72,7 @@ function TextGifBlock({ item, flip = false }) {
 
         {/* GIF / Media */}
         <div className="rounded-2xl border border-neutral-800 overflow-hidden bg-neutral-950/40">
-          <div className="h-64 md:h-72 w-full">
+          <div className="h-72 md:h-80 w-full">
             <img
               src={asset(item.gifSrc)}
               alt={item.alt || item.title}

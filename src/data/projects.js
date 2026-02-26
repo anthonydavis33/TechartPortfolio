@@ -34,7 +34,6 @@ export const projects = [
         "Caught data and reference issues earlier in the pipeline, reducing late-stage integration bugs and rework."
       ],
       media: [
-        { type: "image", src: "projects/DioramaOnly.png", caption: "Tool UI + batch validation output." }
       ],
       sections: [
         {
@@ -42,18 +41,18 @@ export const projects = [
           title: "Automated Gear Loading with Material Validation",
           text: "Selecting a gear set automatically loads the associated armor data after import. The tool performs material validation at load time and applies a high-visibility fallback shader when a reference is invalid, making errors immediately obvious to artists and preventing broken assets from silently entering the pipeline.",
           bullets: ["In-game lighting at a glance", "Clear visual error signaling for invalid materials", "Prevents silent pipeline failures"],
-          gifSrc: "TechartPortfolio/projects/gifs/Diorama1.gif",
+          gifSrc: "projects/gifs/Diorama1.gif",
           caption: "Quick preview for immediate validation and lookdev"
         },
         {
-          eyebrow: "Biome Look",
+          eyebrow: "Biomes",
           title: "Biome-Based Diorama Previews with Environment Modifiers",
           text: "Each diorama is designed to be easily extensible per biome and includes environment modifiers for post-process color grading. This allows artists to preview armor under multiple in-game lighting scenarios and environmental conditions, reducing lighting-related surprises during integration.",
           bullets: ["Modular diorama setup per biome", "In-game lighting and post-process parity", "Fast visual validation across environments"],
           gifSrc: "projects/gifs/Diorama2.gif"
         },
         {
-          eyebrow: "Race and Gender Look",
+          eyebrow: "Race and Gender",
           title: "Dynamic Race & Gender Cycling",
           text: "The tool supports cycling through available races and genders, automatically resolving and loading the correct skeletal meshes for each combination. This ensures armor sets are validated across all supported character variants without manual setup or repeated scene configuration.",
           bullets: ["Automatic skeletal mesh resolution", "One-click validation across character variants", "Reduces setup friction for cross-race testing"],
