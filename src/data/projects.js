@@ -41,8 +41,7 @@ export const projects = [
           title: "Automated Gear Loading with Material Validation",
           text: "Selecting a gear set automatically loads the associated armor data after import. The tool performs material validation at load time and applies a high-visibility fallback shader when a reference is invalid, making errors immediately obvious to artists and preventing broken assets from silently entering the pipeline.",
           bullets: ["In-game lighting at a glance", "Clear visual error signaling for invalid materials", "Prevents silent pipeline failures"],
-          gifSrc: "projects/gifs/Diorama1.gif",
-          caption: "Quick preview for immediate validation and lookdev"
+          gifSrc: "projects/gifs/Diorama1.gif"
         },
         {
           eyebrow: "Biomes",
