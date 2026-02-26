@@ -1,9 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Prism from "prismjs";
 
 export default function CodeBlock({ title, code, language = "cpp" }) {
+  const ref = useRef(null);
+
   useEffect(() => {
-    Prism.highlightAll();
+    if (ref.current) {
+      Prism.highlightAllUnder(ref.current);
+    }
   }, [code]);
 
   return (
@@ -14,7 +18,7 @@ export default function CodeBlock({ title, code, language = "cpp" }) {
         </div>
       )}
 
-      <pre className="overflow-x-auto rounded-xl border border-neutral-800 bg-neutral-950/70 p-4 text-sm">
+      <pre ref={ref} className="overflow-x-auto rounded-xl border border-neutral-800 bg-neutral-950/70 p-4 text-sm">
         <code className={`language-${language}`}>
 {code}
         </code>
