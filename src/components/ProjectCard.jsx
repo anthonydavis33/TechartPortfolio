@@ -20,14 +20,14 @@ function SmallLink({ href, icon: Icon, label }) {
 
 export default function ProjectCard({ project }) {
   return (
-    <div className="glass-card rounded-2xl shadow-soft overflow-hidden">
+    <div className="glass-card card-sheen group rounded-2xl shadow-soft overflow-hidden">
       {/* Thumbnail */}
       <Link to={`/projects/${project.slug}`} className="block">
         <div className="relative">
           <img
             src={asset(project.thumbnail)}
             alt={`${project.title} thumbnail`}
-            className="h-40 w-full object-cover border-b border-neutral-800"
+            className="h-40 w-full object-cover border-b border-neutral-800 transition-transform duration-300 group-hover:scale-[1.02]"
             loading="lazy"
           />
           <div className="absolute top-3 left-3 rounded-full border border-neutral-800 bg-neutral-950/70 px-3 py-1 text-xs text-neutral-100 backdrop-blur">

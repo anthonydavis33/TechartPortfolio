@@ -65,3 +65,49 @@ a:focus-visible, button:focus-visible {
       rgba(10, 10, 10, 0.55) 70%
     );
 }
+
+/* Sheen swipe hover effect for glass cards */
+.card-sheen {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    background-color 220ms ease,
+    border-color 220ms ease;
+}
+
+/* the moving sheen */
+.card-sheen::after {
+  content: "";
+  position: absolute;
+  inset: -40% -60%;
+  background: linear-gradient(
+    120deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.08) 45%,
+    rgba(255, 255, 255, 0.14) 50%,
+    rgba(255, 255, 255, 0.08) 55%,
+    transparent 65%
+  );
+  transform: translateX(-120%) rotate(8deg);
+  transition: transform 520ms ease;
+  pointer-events: none;
+}
+
+/* hover state */
+.card-sheen:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.45);
+}
+
+/* raise glass opacity subtly */
+.card-sheen:hover.glass-card {
+  background: rgba(12, 12, 12, 0.68);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+/* animate the sheen sweep */
+.card-sheen:hover::after {
+  transform: translateX(120%) rotate(8deg);
+}
