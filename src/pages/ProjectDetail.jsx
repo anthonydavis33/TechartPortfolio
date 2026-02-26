@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { useParams, Link } from "react-router-dom";
 import { projects } from "../data/projects";
 import { ArrowLeft, Github, FileText, ArrowUpRight } from "lucide-react";
+import { asset } from "../utils/asset";
 
 function LinkButton({ href, icon: Icon, label }) {
   if (!href) return null;

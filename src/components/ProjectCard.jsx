@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight, Github, FileText } from "lucide-react";
+import { asset } from "../utils/asset";
 
 function SmallLink({ href, icon: Icon, label }) {
   if (!href) return null;
