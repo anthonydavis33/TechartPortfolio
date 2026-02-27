@@ -1,4 +1,4 @@
-import { asset } from "../src/utils/";
+import { asset } from "../utils/asset";
 
 export default function Resume() {
   const pdfPath = "resume/Davis_Anthony_Resume_Aug25.pdf";
