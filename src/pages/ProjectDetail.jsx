@@ -35,42 +35,45 @@ function BulletBlock({ title, items, className = "" }) {
 }
 
 function TextGifBlock({ item, flip = false }) {
-  // Fixed media size for consistency:
-  // - container: same height
-  // - image: object-cover
+  const hasMedia = item.gifSrc?.trim();
+
   return (
     <div className="glass-card rounded-2xl p-6 shadow-soft">
-      <div className={`grid gap-6 items-center md:grid-cols-2 ${flip ? "md:[&>*:first-child]:order-2" : ""}`}>
+      <div
+        className={`grid gap-6 items-center ${
+          hasMedia ? "md:grid-cols-2" : ""
+        } ${flip && hasMedia ? "md:[&>*:first-child]:order-2" : ""}`}
+      >
         {/* Text */}
         <div>
-          {item.eyebrow ? (
+          {item.eyebrow && (
             <div className="text-xs font-semibold tracking-widest text-accent-400/90 uppercase">
               {item.eyebrow}
             </div>
-          ) : null}
+          )}
 
           <h3 className="mt-2 text-xl font-semibold text-neutral-50">
             {item.title}
           </h3>
 
-          {item.text ? (
+          {item.text && (
             <p className="mt-3 text-sm text-neutral-300 leading-relaxed">
               {item.text}
             </p>
-          ) : null}
+          )}
 
-          {item.bullets?.length ? (
+          {item.bullets?.length && (
             <ul className="mt-4 space-y-2 text-sm text-neutral-300 list-disc pl-5">
               {item.bullets.map((b) => (
                 <li key={b}>{b}</li>
               ))}
             </ul>
-          ) : null}
+          )}
         </div>
 
-        {/* GIF / Media */}
-        <div className="rounded-2xl border border-neutral-800 overflow-hidden bg-neutral-950/40">
-          {item.gifSrc?.trim() && (
+        {/* Media — ONLY renders if gifSrc exists */}
+        {hasMedia && (
+          <div className="rounded-2xl border border-neutral-800 overflow-hidden bg-neutral-950/40">
             <div className="h-100 md:h-115 w-full">
               <img
                 src={asset(item.gifSrc)}
@@ -79,13 +82,14 @@ function TextGifBlock({ item, flip = false }) {
                 loading="lazy"
               />
             </div>
-          )}
-          {item.caption ? (
-            <div className="px-4 py-3 text-sm text-neutral-400 border-t border-neutral-800">
-              {item.caption}
-            </div>
-          ) : null}
-        </div>
+
+            {item.caption && (
+              <div className="px-4 py-3 text-sm text-neutral-400 border-t border-neutral-800">
+                {item.caption}
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
@@ -179,24 +183,25 @@ export default function ProjectDetail() {
           </div>
         ) : null}
 
-        {/* Media */}
         {cs.media?.length ? (
           <div className="mt-6 grid gap-4 md:grid-cols-2">
-            {cs.media.map((m) => (
-              <div
-                key={m.src}
-                className="glass-card rounded-2xl shadow-soft"
-              >
-                <img
-                  src={asset(m.src)}
-                  alt={m.caption || project.title}
-                  className="w-full rounded-xl border border-neutral-800 object-cover"
-                />
-                {m.caption && (
-                  <div className="mt-3 text-sm text-neutral-400">{m.caption}</div>
-                )}
-              </div>
-            ))}
+            {cs.media.map((m) => {
+              const src = typeof m === "string" ? m : m?.src;
+              const caption = typeof m === "string" ? "" : m?.caption;
+
+              return (
+                <div key={src} className="glass-card rounded-2xl shadow-soft">
+                  <img
+                    src={asset(src)}
+                    alt={caption || project.title}
+                    className="w-full rounded-xl border border-neutral-800 object-cover"
+                  />
+                  {caption ? (
+                    <div className="mt-3 text-sm text-neutral-400">{caption}</div>
+                  ) : null}
+                </div>
+              );
+            })}
           </div>
         ) : null}
 

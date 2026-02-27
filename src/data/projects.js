@@ -347,7 +347,7 @@ Externalizing this logic ensures the system remains scalable and adaptable. Pipe
   slug: "armor-pipeline-and-naming",
   title: "Armor Pipeline & Naming Conventions",
   tag: "Pipeline Ownership",
-  thumbnail: "projects/AssetNamingConventions.png",
+  thumbnail: "projects/ArmorPipe1.png",
   short:
     "Owned the end to end armor pipeline and naming conventions, aligning multiple teams on standards that scale. Then drove approval through leads and executive stakeholders.",
   stack: ["Unreal Engine 5", "Pipeline Design", "Naming Standards", "Cross-team Alignment", "Documentation"],
@@ -378,9 +378,9 @@ I owned the definition, documentation, and adoption of the armor pipeline and na
 
     // If your detail page shows media at the bottom, this will do exactly what you want.
     media: [
-      "public/projects/ArmorPipe1.png",
-      "public/projects/ArmorPipe2.png",
-      "public/projects/AssetNamingConventions.png"
+      "projects/ArmorPipe1.png",
+      "projects/ArmorPipe2.png",
+      "projects/AssetNamingConventions.png"
     ],
 
     sections: [
