@@ -72,7 +72,7 @@ export const projects = [
     slug: "cloth-lod-tool",
     title: "Automated Cloth LOD Tool",
     tag: "Automation + Tooling", 
-    thumbnail: "projects/AutomatedClothLODButton.png",
+    thumbnail: "projects/AutomatedClothLODButtonThumbnail.png",
     short:
       "One-click editor tool that propagates cloth setup from LOD0 across all skeletal mesh LODs, eliminating repetitive manual setup.",
     stack: ["Automation", "Pipeline", "C++"],
@@ -347,7 +347,7 @@ Externalizing this logic ensures the system remains scalable and adaptable. Pipe
     slug: "armor-pipeline-and-naming",
     title: "Armor Pipeline & Naming Conventions",
     tag: "Pipeline Ownership",
-    thumbnail: "projects/ArmorPipe1.png",
+    thumbnail: "projects/ArmorPipeThumbnail.png",
     short:
       "Owned the end to end armor pipeline and naming conventions, aligning multiple teams on standards that scale. Then drove approval through leads and executive stakeholders.",
     stack: ["Unreal Engine 5", "Pipeline Design", "Naming Standards", "Cross-team Alignment", "Documentation"],

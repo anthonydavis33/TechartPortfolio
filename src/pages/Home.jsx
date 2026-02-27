@@ -102,10 +102,7 @@ export default function Home() {
       {/* (Keep the rest of your sections as-is if you want) */}
       <Section id="contact" eyebrow="Let’s talk" title="Contact">
         <div className="glass-card rounded-2xl shadow-soft">
-          <p className="text-neutral-300 leading-relaxed">
-            Replace these with your real links. We can add a contact form later.
-          </p>
-          <div className="mt-5 grid gap-3 md:grid-cols-3">
+          <div className="mt-5 grid gap-3 md:grid-cols-2">
             <a className="rounded-xl border border-neutral-800 bg-neutral-900/40 px-4 py-3 hover:border-accent-500/50 transition" href="mailto:anthony.davis33@gmail.com">
               <div className="text-sm font-semibold text-neutral-100">Email</div>
               <div className="text-sm text-neutral-400">anthony.davis33@gmail.com</div>
