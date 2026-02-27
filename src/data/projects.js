@@ -378,9 +378,9 @@ I owned the definition, documentation, and adoption of the armor pipeline and na
 
     // If your detail page shows media at the bottom, this will do exactly what you want.
     media: [
-      "projects/ArmorPipe1.png",
-      "projects/ArmorPipe2.png",
-      "projects/AssetNamingConventions.png"
+      "public/projects/ArmorPipe1.png",
+      "public/projects/ArmorPipe2.png",
+      "public/projects/AssetNamingConventions.png"
     ],
 
     sections: [
