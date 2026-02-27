@@ -106,17 +106,13 @@ export default function Home() {
             Replace these with your real links. We can add a contact form later.
           </p>
           <div className="mt-5 grid gap-3 md:grid-cols-3">
-            <a className="rounded-xl border border-neutral-800 bg-neutral-900/40 px-4 py-3 hover:border-accent-500/50 transition" href="mailto:your.email@example.com">
+            <a className="rounded-xl border border-neutral-800 bg-neutral-900/40 px-4 py-3 hover:border-accent-500/50 transition" href="mailto:anthony.davis33@gmail.com">
               <div className="text-sm font-semibold text-neutral-100">Email</div>
-              <div className="text-sm text-neutral-400">your.email@example.com</div>
+              <div className="text-sm text-neutral-400">anthony.davis33@gmail.com</div>
             </a>
-            <a className="rounded-xl border border-neutral-800 bg-neutral-900/40 px-4 py-3 hover:border-accent-500/50 transition" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">
+            <a className="rounded-xl border border-neutral-800 bg-neutral-900/40 px-4 py-3 hover:border-accent-500/50 transition" href="https://www.linkedin.com/in/anthonydavistechart/" target="_blank" rel="noreferrer">
               <div className="text-sm font-semibold text-neutral-100">LinkedIn</div>
-              <div className="text-sm text-neutral-400">linkedin.com/in/you</div>
-            </a>
-            <a className="rounded-xl border border-neutral-800 bg-neutral-900/40 px-4 py-3 hover:border-accent-500/50 transition" href="https://github.com/" target="_blank" rel="noreferrer">
-              <div className="text-sm font-semibold text-neutral-100">GitHub</div>
-              <div className="text-sm text-neutral-400">github.com/you</div>
+              <div className="text-sm text-neutral-400">https://www.linkedin.com/in/anthonydavistechart/</div>
             </a>
           </div>
         </div>

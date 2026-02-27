@@ -35,7 +35,7 @@ function BulletBlock({ title, items, className = "" }) {
   );
 }
 
-function TextGifBlock({ item, flip = false }) {
+function TextGifBlock({ item, flip = false, onOpenLightbox }) {
   const hasMedia = item.gifSrc?.trim();
 
   return (
@@ -81,6 +81,7 @@ function TextGifBlock({ item, flip = false }) {
                 alt=""
                 className="w-full h-full object-cover rounded-xl"
                 loading="lazy"
+                onClick={() => onOpenLightbox?.(item.gifSrc, item.caption || item.title)}
               />
             </div>
 
@@ -103,6 +104,12 @@ export default function ProjectDetail() {
     () => projects.find((p) => p.slug === slug),
     [slug]
   );
+
+  const openLightbox = (src, caption = "") => {
+    if (!src) return;
+    setLightboxSrc(src);
+    setLightboxCaption(caption || project.title);
+  };
 
   const [lightboxSrc, setLightboxSrc] = useState(null);
   const [lightboxCaption, setLightboxCaption] = useState("");
@@ -182,7 +189,12 @@ export default function ProjectDetail() {
         {cs.sections?.length ? (
           <div className="mt-6 space-y-4">
             {cs.sections.map((item, i) => (
-              <TextGifBlock key={item.title} item={item} flip={i % 2 === 1} />
+              <TextGifBlock 
+                key={item.title} 
+                item={item} 
+                flip={i % 2 === 1}
+                onOpenLightbox={openLightbox} 
+              />
             ))}
           </div>
         ) : null}

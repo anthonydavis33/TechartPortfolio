@@ -344,163 +344,149 @@ Externalizing this logic ensures the system remains scalable and adaptable. Pipe
   },
 
   {
-  slug: "armor-pipeline-and-naming",
-  title: "Armor Pipeline & Naming Conventions",
-  tag: "Pipeline Ownership",
-  thumbnail: "projects/ArmorPipe1.png",
-  short:
-    "Owned the end to end armor pipeline and naming conventions, aligning multiple teams on standards that scale. Then drove approval through leads and executive stakeholders.",
-  stack: ["Unreal Engine 5", "Pipeline Design", "Naming Standards", "Cross-team Alignment", "Documentation"],
-  links: { demo: "", repo: "", writeup: "" },
-
-  caseStudy: {
-    overview: `
-I owned the definition, documentation, and adoption of the armor pipeline and naming conventions—ensuring the workflow was understandable for content creators, enforceable by tools, and scalable across large character sets. This included aligning requirements across multiple teams and driving the final standard through lead and executive approval.
-    `.trim(),
-
-    problem: [
-      "Without a single agreed-upon pipeline, content production risks drift: inconsistent folder structures, mismatched naming, and ambiguous ownership of steps.",
-      "Inconsistent conventions increase tool complexity, reduce validation reliability, and create downstream bugs that are expensive to diagnose.",
-      "Large character libraries require standards that scale across asset types, variants, and long-term production changes."
-    ],
-
-    solution: [
-      "Designed a clear end-to-end armor pipeline that defines responsibilities, review points, and required validations across teams.",
-      "Established naming and folder conventions that map cleanly to tool automation and data validation, reducing ambiguity and enabling enforcement.",
-      "Drove alignment and approval across discipline leads and executive stakeholders to ensure adoption and long-term consistency."
-    ],
-
-    impact: [
-      "Improved consistency and predictability across armor content production, reducing rework and correctness drift.",
-      "Enabled stronger automation and validation by standardizing the inputs tools depend on (paths, naming, and structure).",
-      "Created a shared reference that accelerates onboarding and keeps cross-team collaboration smoother during high-volume production."
-    ],
-
-    // If your detail page shows media at the bottom, this will do exactly what you want.
-    media: [
-      "projects/ArmorPipe1.png",
-      "projects/ArmorPipe2.png",
-      "projects/AssetNamingConventions.png"
-    ],
-
-    sections: [
-      {
-        eyebrow: "Pipeline Owner",
-        title: "A scalable standard for high-volume armor production",
-        text: `
-This work formalized how armor moves from request → creation → import → validation → approval, and it codified the naming and folder structure needed to keep a large character library stable over time. I owned the effort end-to-end: gathering requirements, resolving cross-team constraints, documenting the final standard, and driving it through reviews with discipline leads and executive stakeholders.
-
-The result is a pipeline that is easier to follow, easier to validate, and easier to automate—reducing ambiguity for artists while enabling tools to reliably enforce correctness.
-        `.trim(),
-        bullets: [
-          "Defined the end-to-end pipeline flow and the review/validation gates.",
-          "Standardized naming + folder structure to support automation and drift prevention.",
-          "Owned cross-team alignment and approvals to ensure adoption."
-        ],
-        // No inline gif for this section — the images live in the bottom media gallery.
-        gifSrc: ""
-      }
-    ]
-  }
-},
-
-  {
-    slug: "",
-    title: "",
-    tag: "",
-    thumbnail: "projects/Importer.png",
-    short: "",
-    stack: ["Unreal Engine 5", "EUW", "C++", "Data Validation"],
+    slug: "armor-pipeline-and-naming",
+    title: "Armor Pipeline & Naming Conventions",
+    tag: "Pipeline Ownership",
+    thumbnail: "projects/ArmorPipe1.png",
+    short:
+      "Owned the end to end armor pipeline and naming conventions, aligning multiple teams on standards that scale. Then drove approval through leads and executive stakeholders.",
+    stack: ["Unreal Engine 5", "Pipeline Design", "Naming Standards", "Cross-team Alignment", "Documentation"],
     links: { demo: "", repo: "", writeup: "" },
+
     caseStudy: {
-      overview:`
-        
-        `,
+      overview: `
+  I owned the definition, documentation, and adoption of the armor pipeline and naming conventions—ensuring the workflow was understandable for content creators, enforceable by tools, and scalable across large character sets. This included aligning requirements across multiple teams and driving the final standard through lead and executive approval.
+      `.trim(),
+
       problem: [
-        ""
+        "Without a single agreed-upon pipeline, content production risks drift: inconsistent folder structures, mismatched naming, and ambiguous ownership of steps.",
+        "Inconsistent conventions increase tool complexity, reduce validation reliability, and create downstream bugs that are expensive to diagnose.",
+        "Large character libraries require standards that scale across asset types, variants, and long-term production changes."
       ],
 
       solution: [
-        ""
+        "Designed a clear end-to-end armor pipeline that defines responsibilities, review points, and required validations across teams.",
+        "Established naming and folder conventions that map cleanly to tool automation and data validation, reducing ambiguity and enabling enforcement.",
+        "Drove alignment and approval across discipline leads and executive stakeholders to ensure adoption and long-term consistency."
       ],
 
       impact: [
-        ""
+        "Improved consistency and predictability across armor content production, reducing rework and correctness drift.",
+        "Enabled stronger automation and validation by standardizing the inputs tools depend on (paths, naming, and structure).",
+        "Created a shared reference that accelerates onboarding and keeps cross-team collaboration smoother during high-volume production."
       ],
-      media: [],
+
+      // If your detail page shows media at the bottom, this will do exactly what you want.
+      media: [
+        "projects/ArmorPipe1.png",
+        "projects/ArmorPipe2.png",
+        "projects/AssetNamingConventions.png"
+      ],
+
       sections: [
         {
-          eyebrow: "Trusty Importer",
-          title: "Every project needs one!",
+          eyebrow: "Pipeline Owner",
+          title: "A scalable standard for high-volume armor production",
           text: `
-            
-            `,
-          bullets: [
-            ""
-          ],
-          gifSrc: "projects/Importer.png"
-        },
-        {
-          eyebrow: "",
-          title: "",
-          text: `
+  This work formalized how armor moves from request → creation → import → validation → approval, and it codified the naming and folder structure needed to keep a large character library stable over time. I owned the effort end-to-end: gathering requirements, resolving cross-team constraints, documenting the final standard, and driving it through reviews with discipline leads and executive stakeholders.
 
-          `,
+  The result is a pipeline that is easier to follow, easier to validate, and easier to automate—reducing ambiguity for artists while enabling tools to reliably enforce correctness.
+          `.trim(),
           bullets: [
-            ""
+            "Defined the end-to-end pipeline flow and the review/validation gates.",
+            "Standardized naming + folder structure to support automation and drift prevention.",
+            "Owned cross-team alignment and approvals to ensure adoption."
           ],
-          gifSrc: "projects/projectsettingsimporter.png"
+          // No inline gif for this section — the images live in the bottom media gallery.
+          gifSrc: ""
         }
       ]
     }
   },
 
   {
-    slug: "",
-    title: "",
-    tag: "",
-    thumbnail: "projects/Importer.png",
-    short: "",
-    stack: ["Unreal Engine 5", "EUW", "C++", "Data Validation"],
+    slug: "nanite-material-optimization",
+    title: "Nanite Material & Uber Shader Optimization",
+    tag: "Rendering Optimization",
+    thumbnail: "projects/OptimizationThumbnail.png",
+    short: "Reduced frame cost by ~7ms through Nanite material debugging, derivative fixes, and shader usage flag isolation across the environment.",
+    stack: [
+      "Unreal Engine 5",
+      "Nanite",
+      "Material Graph",
+      "Shader Optimization",
+      "GPU Profiling",
+      "Rendering Debugging"
+    ],
     links: { demo: "", repo: "", writeup: "" },
+
     caseStudy: {
-      overview:`
-        
-        `,
+      overview: `
+        While profiling world performance, I identified significant GPU cost tied to our environment Uber shader and Nanite material behavior. 
+        Through targeted debugging using Nanite visualizers and GPU profiling tools, I reduced frame time by ~7ms on medium-spec hardware.
+      `,
+
       problem: [
-        ""
+        "Nanite NoDerivativeOps visualizer showed widespread red across the world.",
+        "Our proprietary cell bombing function was not explicitly passing DDX/DDY into texture samples.",
+        "Uber shader was automatically accumulating material usage flags (Skeletal, Spline, Niagara, etc.).",
+        "Nanite does not batch those use cases separately, causing unnecessary instruction bloat."
       ],
 
       solution: [
-        ""
+        "Audited and corrected derivative usage in proprietary cell bombing material functions by explicitly wiring DDX and DDY into texture samplers.",
+        "Restructured Uber shader hierarchy: created a static-mesh-only parent material.",
+        "Built explicit child materials for Skeletal, Spline, and Niagara usage.",
+        "Disabled automatic usage flag updates to prevent unintended instruction growth."
       ],
 
       impact: [
-        ""
+        "Saved ~1ms per frame globally by correcting derivative behavior.",
+        "Saved ~6ms on average by isolating material usage flags.",
+        "Reduced shader instruction count and improved Nanite batching efficiency.",
+        "Improved GPU stability across medium-spec hardware."
       ],
+
       media: [],
+
       sections: [
         {
-          eyebrow: "Trusty Importer",
-          title: "Every project needs one!",
+          eyebrow: "Nanite Debugging",
+          title: "Fixing NoDerivativeOps & Cell Bombing",
           text: `
+            While profiling with Nanite visualizers, the NoDerivativeOps view exposed heavy red coverage across the world. 
+            This indicated incorrect derivative handling inside our proprietary cell bombing function.
             
-            `,
-          bullets: [
-            ""
-          ],
-          gifSrc: "projects/Importer.png"
-        },
-        {
-          eyebrow: "",
-          title: "",
-          text: `
-
+            The issue stemmed from texture samplers not explicitly receiving DDX/DDY inputs. 
+            After refactoring the material function to properly propagate derivatives, Nanite was able to correctly evaluate mip levels and batching.
           `,
           bullets: [
-            ""
+            "Identified derivative misuse via Nanite visualizers",
+            "Explicitly wired DDX/DDY into texture sampling",
+            "Reduced per-frame cost by ~1ms"
           ],
-          gifSrc: "projects/projectsettingsimporter.png"
+          gifSrc: "projects/NoDerivativeOps.png"
+        },
+
+        {
+          eyebrow: "Shader Architecture",
+          title: "Isolating Material Usage Flags for Nanite",
+          text: `
+            Unreal automatically enables usage flags on materials when they are used in different contexts. 
+            Our environment Uber shader was used across Static Meshes, Skeletal Meshes, Splines, and Niagara systems.
+
+            Nanite does not batch these variants separately, which caused instruction bloat and increased GPU cost.
+
+            By restructuring the material hierarchy into a static-mesh-only parent and explicit children for other use cases — 
+            and disabling automatic usage flag updates — we removed unnecessary instructions from the majority of environment materials.
+          `,
+          bullets: [
+            "Separated Static Mesh parent from dynamic use cases",
+            "Disabled automatic usage flag propagation",
+            "Reduced instruction count across the environment",
+            "Saved ~6ms on medium-spec hardware"
+          ],
+          gifSrc: "projects/NaniteUsageFlags.png"
         }
       ]
     }
