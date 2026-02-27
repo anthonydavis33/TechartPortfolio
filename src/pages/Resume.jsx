@@ -6,7 +6,6 @@ export default function Resume() {
   const pdfPath = "resume/Davis_Anthony_Resume_Aug25.pdf";
 
   return (
-    return (
     <div className="mx-auto max-w-5xl px-4 py-10">
       <div className="flex items-center justify-between gap-4">
         <button
