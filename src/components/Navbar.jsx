@@ -1,26 +1,51 @@
-import { Link } from "react-router-dom";
+import { Mail, ExternalLink } from "lucide-react";
 
 const base = import.meta.env.BASE_URL;
 
+const nav = [
+  { href: `${base}#projects`, label: "Projects" },
+  { href: `${base}resume`, label: "Resume" },
+  { href: `${base}#contact`, label: "Contact" }
+];
+
 export default function Navbar() {
   return (
-    <nav className="...">
-      <div className="...">
-        {/* Projects -> home + anchor */}
-        <a href={`${base}#work`} className="nav-link">
-          Projects
+    <div className="sticky top-0 z-50 border-b border-neutral-900 bg-neutral-950/70 backdrop-blur">
+      <div className="mx-auto max-w-6xl px-5 py-3 flex items-center justify-between">
+        <a href={base} className="font-semibold text-neutral-50">
+          <span className="text-accent-400">Tech</span> Art Portfolio
         </a>
 
-        {/* Resume -> route */}
-        <Link to="/resume" className="nav-link">
-          Resume
-        </Link>
+        <div className="hidden md:flex items-center gap-2">
+          {nav.map((n) => (
+            <a
+              key={n.href}
+              href={n.href}
+              className="rounded-xl px-3 py-2 text-sm text-neutral-200 hover:text-white hover:bg-neutral-900/60 transition"
+            >
+              {n.label}
+            </a>
+          ))}
+        </div>
 
-        {/* Contact -> home + anchor */}
-        <a href={`${base}#contact`} className="nav-link">
-          Contact
-        </a>
+        <div className="flex items-center gap-2">
+          <a
+            href={`${base}#contact`}
+            className="inline-flex items-center gap-2 rounded-xl border border-neutral-800 bg-neutral-900/60 px-3 py-2 text-sm hover:border-accent-500/50 transition"
+          >
+            <Mail className="h-4 w-4" />
+            <span className="hidden sm:inline">Reach out</span>
+          </a>
+
+          <a
+            href={`${base}#projects`}
+            className="inline-flex items-center gap-2 rounded-xl bg-accent-600/90 px-3 py-2 text-sm text-white hover:bg-accent-600 transition"
+          >
+            <ExternalLink className="h-4 w-4" />
+            <span className="hidden sm:inline">View projects</span>
+          </a>
+        </div>
       </div>
-    </nav>
+    </div>
   );
 }
