@@ -4,6 +4,7 @@ import { projects } from "../data/projects";
 import { ArrowLeft, Github, FileText, ArrowUpRight } from "lucide-react";
 import { asset } from "../utils/asset";
 import CodeBlock from "../components/CodeBlock";
+import { useState } from "react";
 
 function LinkButton({ href, icon: Icon, label }) {
   if (!href) return null;
@@ -103,6 +104,9 @@ export default function ProjectDetail() {
     [slug]
   );
 
+  const [lightboxSrc, setLightboxSrc] = useState(null);
+  const [lightboxCaption, setLightboxCaption] = useState("");
+
   if (!project) {
     return (
       <div className="mx-auto max-w-4xl px-5 py-16">
@@ -184,18 +188,22 @@ export default function ProjectDetail() {
         ) : null}
 
         {cs.media?.length ? (
-          <div className="mt-6 grid gap-4 md:grid-cols-2">
+          <div className="mt-6 grid gap-4">
             {cs.media.map((m) => {
               const src = typeof m === "string" ? m : m?.src;
               const caption = typeof m === "string" ? "" : m?.caption;
 
               return (
                 <div key={src} className="glass-card rounded-2xl shadow-soft">
-                  console.log("MEDIA ITEM:", m);
                   <img
                     src={asset(src)}
                     alt={caption || project.title}
-                    className="w-full rounded-xl border border-neutral-800 object-cover"
+                    className="w-full h-auto rounded-xl border border-neutral-800 object-contain bg-neutral-950/40 cursor-zoom-in transition-transform duration-200 hover:scale-[1.01]"
+                    loading="lazy"
+                    onClick={() => {
+                      setLightboxSrc(src);
+                      setLightboxCaption(caption || project.title);
+                    }}
                   />
                   {caption ? (
                     <div className="mt-3 text-sm text-neutral-400">{caption}</div>
@@ -211,6 +219,21 @@ export default function ProjectDetail() {
           <CodeBlock title={cs?.codeTitle} code={cs?.code} language="cpp" />
         </div>
       </div>
+
+      {lightboxSrc && (
+        <div
+          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+          onClick={() => setLightboxSrc(null)}
+        >
+          <img
+            src={asset(lightboxSrc)}
+            alt={lightboxCaption}
+            className="max-w-[95vw] max-h-[90vh] object-contain rounded-2xl border border-neutral-700 bg-neutral-950"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
+      
     </div>
   );
 }
