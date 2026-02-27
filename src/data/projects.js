@@ -435,7 +435,7 @@ Externalizing this logic ensures the system remains scalable and adaptable. Pipe
 
       solution: [
         "Audited and corrected derivative usage in proprietary cell bombing material functions by explicitly wiring DDX and DDY into texture samplers.",
-        "Restructured Uber shader hierarchy: created a static-mesh-only parent material.",
+        "Restructured Uber shader hierarchy: created a static mesh only parent material.",
         "Built explicit child materials for Skeletal, Spline, and Niagara usage.",
         "Disabled automatic usage flag updates to prevent unintended instruction growth."
       ],
@@ -477,8 +477,8 @@ Externalizing this logic ensures the system remains scalable and adaptable. Pipe
 
             Nanite does not batch these variants separately, which caused instruction bloat and increased GPU cost.
 
-            By restructuring the material hierarchy into a static-mesh-only parent and explicit children for other use cases — 
-            and disabling automatic usage flag updates — we removed unnecessary instructions from the majority of environment materials.
+            By restructuring the material hierarchy into a static mesh only parent and explicit children for other use cases
+            and disabling automatic usage flag updates. We removed unnecessary instructions from the majority of environment materials.
           `,
           bullets: [
             "Separated Static Mesh parent from dynamic use cases",

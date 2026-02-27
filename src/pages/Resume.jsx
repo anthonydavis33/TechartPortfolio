@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 export default function Resume() {
   const navigate = useNavigate();
   const pdfPath = "resume/Davis_Anthony_Resume_Aug25.pdf";
+  const pdfUrl = `${asset(pdfPath)}#toolbar=0&navpanes=0&scrollbar=0`;
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-10">
@@ -27,7 +28,7 @@ export default function Resume() {
 
       <div className="mt-6 glass-card rounded-2xl shadow-soft overflow-hidden border border-neutral-800">
         <embed
-          src={asset(pdfPath)}
+          src={asset(pdfUrl)}
           type="application/pdf"
           className="w-full"
           style={{ height: "85vh" }}
