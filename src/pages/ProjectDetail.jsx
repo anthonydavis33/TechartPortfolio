@@ -70,10 +70,10 @@ function TextGifBlock({ item, flip = false }) {
 
         {/* GIF / Media */}
         <div className="rounded-2xl border border-neutral-800 overflow-hidden bg-neutral-950/40">
-          {section.gifSrc?.trim() && (
+          {item.gifSrc?.trim() && (
             <div className="h-100 md:h-115 w-full">
               <img
-                src={asset(section.gifSrc)}
+                src={asset(item.gifSrc)}
                 alt=""
                 className="w-full h-full object-cover rounded-xl"
                 loading="lazy"
