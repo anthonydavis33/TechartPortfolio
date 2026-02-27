@@ -9,13 +9,14 @@ export default function App() {
   useGlassHoverSpotlight();
   
   return (
-    <>
+    <div id="app-scroll" className="min-h-screen">
       <ScrollToTop />
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/projects/:slug" element={<ProjectDetail />} />
         <Route path="/resume" element={<Resume />} />
       </Routes>
-    </>
+    </div>
   );
 }
