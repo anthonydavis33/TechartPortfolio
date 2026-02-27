@@ -11,7 +11,6 @@ export default function App() {
   return (
     <div id="app-scroll" className="min-h-screen">
       <ScrollToTop />
-      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/projects/:slug" element={<ProjectDetail />} />
