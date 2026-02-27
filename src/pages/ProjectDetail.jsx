@@ -191,6 +191,7 @@ export default function ProjectDetail() {
 
               return (
                 <div key={src} className="glass-card rounded-2xl shadow-soft">
+                  console.log("MEDIA ITEM:", m);
                   <img
                     src={asset(src)}
                     alt={caption || project.title}
