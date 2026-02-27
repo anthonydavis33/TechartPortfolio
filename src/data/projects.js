@@ -3,7 +3,7 @@ export const projects = [
     slug: "character-pipeline-tooling",
     title: "Character Lookdev Tool",
     tag: "Tools + Pipeline",
-    thumbnail: "projects/DioramaOnly.png",
+    thumbnail: "projects/diorama.png",
     short:
       "Editor tooling that accelerates character look-dev with validation, batch fixes, and artist-first UX.",
     stack: ["Unreal Engine", "Python", "Blueprints", "Perforce"],
@@ -269,48 +269,82 @@ export const projects = [
   },
 
   {
-    slug: "pcg-workflow",
-    title: "World-Building / PCG Workflow",
-    tag: "PCG + UX",
+    slug: "asset-import-validation-tool",
+    title: "Asset Importer & Variant Resolver",
+    tag: "Pipeline Automation",
     thumbnail: "projects/pcg-workflow.jpg",
     short:
-      "Scalable PCG patterns and tooling for predictable world dressing, fast iteration, and profiling discipline.",
-    stack: ["Unreal PCG", "Editor Tools", "Profiling"],
+      "A C++ Unreal Engine importer that detects engine vs. local assets, surfaces only missing data, and intelligently resolves texture variants through parent mesh inheritance.",
+    stack: ["Unreal Engine 5", "EUW", "C++", "Data Validation"],
     links: { demo: "", repo: "", writeup: "" },
     caseStudy: {
-      overview:
-        "A practical PCG workflow focused on scalability: predictable results, performant graphs, and rapid iteration.",
+      overview:`
+        This tool modernizes the character import workflow by detecting engine vs. local asset differences and surfacing only missing data. It intelligently resolves texture-only variants through parent mesh inheritance and centralizes configuration via custom Project Settings.
+
+By eliminating duplication, reducing manual assignment, and externalizing validation rules, the importer improves reliability and scalability across character production pipelines.
+        `,
       problem: [
-        "Graphs became fragile and slow as content scale increased.",
-        "Hard to keep results predictable and art-directable.",
-        "Iteration bottlenecks when profiling wasn’t baked into the workflow."
+        "Asset drift between engine and local machines led to duplication and inconsistent imports.",
+        "Manual variant resolution and parent assignment increased repetitive work.",
+        "Hardcoded rules limited pipeline flexibility."
       ],
+
       solution: [
-        "Established reusable graph patterns and controls.",
-        "Created data-driven knobs for art direction.",
-        "Built a profiling-first workflow with clear performance budgets."
+        "Developed a delta-aware C++ importer that surfaces only missing engine data.",
+        "Automated texture-variant parent resolution per character slot.",
+        "Externalized import rules into configurable Project Settings."
       ],
+
       impact: [
-        "More scalable graphs with fewer surprise regressions.",
-        "Faster iteration for artists and tech art.",
-        "Clearer performance expectations on large scenes."
+        "Reduced duplicate content and manual setup.",
+        "Standardized variant handling across character assets.",
+        "Improved scalability and long-term pipeline maintainability."
       ],
-      media: [{ type: "image", src: "projects/pcg-workflow.jpg", caption: "PCG layout + debugging overview." }],
+      media: [],
       sections: [
         {
-          eyebrow: "Workflow",
-          title: "Batch validation with safe previews",
-          text: "Artists can see what will change before the operation runs. Logs are generated per batch for auditing.",
-          bullets: ["Preview-first UX", "Clear failure reasons", "Per-asset actions"],
-          gifSrc: "projects/gifs/validation-preview.gif",
-          caption: "Preview mode with validation results and fix actions."
+          eyebrow: "Trusty Importer",
+          title: "Every project needs one!",
+          text: `
+            This tool compares the current engine state against locally available assets and surfaces only the differences. Instead of flooding the user with all possible options, the dropdown dynamically populates only assets that exist locally but are not yet present in the engine.
+
+This prevents duplicate imports, eliminates guesswork, and reduces cognitive load for character artists. The tool ensures that what you see is actionable.
+
+Additionally, the importer supports a texture-variant workflow. If a new item does not contain a skeletal mesh, the system assumes it is a variant and prompts the user to select a valid parent mesh for that specific character slot. The selected parent is then assigned automatically during texture import, maintaining consistency and reducing manual assignment errors.
+
+Because this system interacts with proprietary data structures and validation rules, it is implemented fully in C++ within the Unreal Editor.
+            `,
+          bullets: [
+            "Compares local assets against engine state and surfaces only true deltas.",
+            "Prevents duplicate imports by filtering out assets already present in the project.",
+            "Reduces cognitive load by dynamically populating dropdowns with actionable options only.",
+            "Detects texture-only variants and prompts for valid parent skeletal mesh assignment per slot.",
+            "Automates parent assignment during texture import to maintain consistency."
+          ],
+          gifSrc: "projects/Importer.png"
         },
         {
-          eyebrow: "UX",
-          title: "One-click setup for new assets",
-          text: "Automates repetitive steps and enforces naming and folder rules without blocking iteration.",
-          bullets: ["Defaults that match production", "Fast iteration", "Guardrails not gates"],
-          gifSrc: "projects/gifs/one-click-setup.gif"
+          eyebrow: "Configurable Pipeline Rules",
+          title: "Now the designers have the power!",
+          text: `
+To prevent slot logic, asset paths, and validation rules from being hardcoded, I extended Unreal's Project Settings with custom configuration panels specific to this importer.
+
+These settings define:
+
+• Slot-to-parent resolution rules  
+• Asset path expectations  
+• Variant handling behavior  
+• Validation constraints  
+
+By externalizing these rules, the importer remains flexible and scalable. Designers and pipeline owners can adjust behavior without modifying source code, allowing the tool to adapt across different content types and production needs.
+`,
+          bullets: [
+            "Extended Unreal Project Settings with custom importer configuration panels.",
+            "Defined slot-to-parent resolution rules and asset path expectations.",
+            "Centralized variant handling behavior and validation constraints.",
+            "Removed hardcoded logic, improving scalability and maintainability."
+          ],
+          gifSrc: "projects/projectsettingsimporter.png"
         }
       ]
     }

@@ -198,11 +198,14 @@ export default function ProjectDetail() {
           </div>
         ) : null}
 
-        <CodeBlock
-          title={cs.codeTitle}
-          code={cs.code}
-          language="cpp"
-        />
+        {/* CodeBlock */}
+        <div className="flex flex-col gap-10">
+          <CodeBlock
+            title={cs.codeTitle}
+            code={cs.code}
+            language="cpp"
+          />
+        </div>
       </div>
     </div>
   );

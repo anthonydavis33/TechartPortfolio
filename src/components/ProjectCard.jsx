@@ -23,13 +23,17 @@ export default function ProjectCard({ project }) {
     <div className="glass-card card-sheen group rounded-2xl shadow-soft overflow-hidden">
       {/* Thumbnail */}
       <Link to={`/projects/${project.slug}`} className="block">
-        <div className="relative">
+        <div className="relative aspect-[16/9] overflow-hidden">
           <img
             src={asset(project.thumbnail)}
             alt={`${project.title} thumbnail`}
-            className="h-40 w-full object-cover border-b border-neutral-800 transition-transform duration-300 group-hover:scale-[1.02]"
+            className="w-full h-full object-cover border-b border-neutral-800 transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
           />
+          {/* Gradient Work */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
+
+          {/* Tags */}
           <div className="absolute top-3 left-3 rounded-full border border-neutral-800 bg-neutral-950/70 px-3 py-1 text-xs text-neutral-100 backdrop-blur">
             {project.tag}
           </div>
