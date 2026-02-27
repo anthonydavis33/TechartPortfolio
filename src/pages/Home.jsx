@@ -30,22 +30,59 @@ export default function Home() {
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-2 rounded-full border border-neutral-800 bg-neutral-900/40 px-3 py-1 text-xs text-neutral-200">
                 <Sparkles className="h-4 w-4 text-accent-400" />
-                Technical Art • Tools • Shaders • Pipelines
+                Lead Technical Artist • Unreal Tools & Pipelines
               </div>
 
               <h1 className="mt-4 text-3xl md:text-5xl font-semibold text-neutral-50 leading-tight">
-                I build production-ready tools and shaders that make artists faster.
+                I build production tools that keep character pipelines fast, consistent, and shippable.
               </h1>
 
               <p className="mt-4 text-neutral-300 leading-relaxed">
-                Dense summaries for quick scanning—deep dives for the hiring manager who wants details.
+                Artist-first workflows in Unreal—batch operations, validation, and smart automation—so teams spend less time fighting setup and more time making great content.
               </p>
 
-              <div className="mt-8 grid gap-3 md:grid-cols-3">
-                <Pill icon={Wrench} title="Tooling" text="Editor utilities, validation, batch pipelines, and UX." />
-                <Pill icon={Zap} title="Shaders" text="Art-directable systems with debug views and sane cost." />
-                <Pill icon={CheckCircle2} title="Production" text="Stability, documentation, and maintainability." />
+              <p className="mt-3 text-sm text-neutral-400">
+                Recent work: Lookdev Diorama Tool • Delta-aware Asset Importer • One-click Cloth LOD Automation
+              </p>
+
+              <div className="mt-5 flex flex-wrap gap-2">
+                {[
+                  "Unreal Engine",
+                  "C++ Editor Tools",
+                  "Python / Blueprints",
+                  "Validation Systems",
+                  "Perforce-aware workflows",
+                ].map((t) => (
+                  <span
+                    key={t}
+                    className="rounded-full border border-neutral-800 bg-neutral-900/30 px-3 py-1 text-xs text-neutral-200"
+                  >
+                    {t}
+                  </span>
+                ))}
               </div>
+
+              <div className="mt-8 grid gap-3 md:grid-cols-3">
+                <Pill
+                  icon={Wrench}
+                  title="Artist-first editor UX"
+                  text="Batch operations, previews, and guardrails that reduce repetitive clicks and prevent mistakes."
+                />
+                <Pill
+                  icon={CheckCircle2}
+                  title="Validation + drift prevention"
+                  text="Systems that detect mismatches, enforce structure, and surface only actionable issues."
+                />
+                <Pill
+                  icon={Zap}
+                  title="One-click automation"
+                  text="Workflows like cloth LOD propagation and variant-aware importing that cut setup time drastically."
+                />
+              </div>
+
+              <p className="mt-6 text-neutral-300 leading-relaxed">
+                My focus is simple: ship tools that artists trust, and pipelines that don’t drift.
+              </p>
             </div>
 
             <div className="pointer-events-none absolute inset-0 opacity-60">
