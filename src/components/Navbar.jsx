@@ -1,40 +1,75 @@
 import { Mail, ExternalLink } from "lucide-react";
+import { useLocation, useNavigate } from "react-router-dom";
 
-const base = import.meta.env.BASE_URL;
-
-const nav = [
-  { href: `${base}#work`, label: "Projects" },
-  { href: `${base}#/resume`, label: "Resume" },
-  { href: `${base}#contact`, label: "Contact" }
-];
+function scrollToId(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
 
 export default function Navbar() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const goToSection = (id) => {
+    // If we're not on home, go home first, then scroll.
+    if (location.pathname !== "/") {
+      navigate("/");
+      // Let Home render, then scroll
+      requestAnimationFrame(() => {
+        setTimeout(() => scrollToId(id), 0);
+      });
+    } else {
+      scrollToId(id);
+    }
+  };
+
   return (
     <div className="sticky top-0 z-50 border-b border-neutral-900 bg-neutral-950/70 backdrop-blur">
       <div className="mx-auto max-w-6xl px-5 py-3 flex items-center justify-between">
-        <a href={base} className="font-semibold text-neutral-50">
+        <a
+          href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            navigate("/");
+          }}
+          className="font-semibold text-neutral-50"
+        >
           <span className="text-accent-400">Tech</span> Art Portfolio
         </a>
 
         <div className="hidden md:flex items-center gap-2">
-          {nav.map((n) => (
-            <a
-              key={n.href}
-              href={n.href}
-              className="rounded-xl px-3 py-2 text-sm text-neutral-200 hover:text-white hover:bg-neutral-900/60 transition"
-            >
-              {n.label}
-            </a>
-          ))}
-        </div>
-
-        <div className="flex items-center gap-2">
           <a
-            href={`${base}#contact`}
-            className="inline-flex items-center gap-2 rounded-xl border border-neutral-800 bg-neutral-900/60 px-3 py-2 text-sm hover:border-accent-500/50 transition"
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              goToSection("work");
+            }}
+            className="rounded-xl px-3 py-2 text-sm text-neutral-200 hover:text-white hover:bg-neutral-900/60 transition"
           >
-            <Mail className="h-4 w-4" />
-            <span className="hidden sm:inline">Reach out</span>
+            Projects
+          </a>
+
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("/resume");
+            }}
+            className="rounded-xl px-3 py-2 text-sm text-neutral-200 hover:text-white hover:bg-neutral-900/60 transition"
+          >
+            Resume
+          </a>
+
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              goToSection("contact");
+            }}
+            className="rounded-xl px-3 py-2 text-sm text-neutral-200 hover:text-white hover:bg-neutral-900/60 transition"
+          >
+            Contact
           </a>
         </div>
       </div>
