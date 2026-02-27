@@ -8,7 +8,7 @@ import { CheckCircle2, Sparkles, Wrench, Zap } from "lucide-react";
 function Pill({ icon, title, text }) {
   const Icon = icon;
   return (
-    <div className="glass-card glass-interactive rounded-2xl shadow-soft">
+    <div className="glass-card rounded-2xl shadow-soft">
       <div className="flex items-center gap-2 text-neutral-100">
         <Icon className="h-5 w-5 text-accent-400" />
         <div className="font-semibold">{title}</div>
@@ -33,7 +33,7 @@ export default function Home() {
                 Technical Art • Tools • Shaders • Pipelines
               </div>
 
-              <h1 className="glass-card glass-interactive mt-4 text-3xl md:text-5xl font-semibold text-neutral-50 leading-tight">
+              <h1 className="mt-4 text-3xl md:text-5xl font-semibold text-neutral-50 leading-tight">
                 I build production-ready tools and shaders that make artists faster.
               </h1>
 
@@ -68,7 +68,7 @@ export default function Home() {
 
       {/* (Keep the rest of your sections as-is if you want) */}
       <Section id="contact" eyebrow="Let’s talk" title="Contact">
-        <div className="glass-card glass-interactive rounded-2xl shadow-soft">
+        <div className="glass-card rounded-2xl shadow-soft">
           <p className="text-neutral-300 leading-relaxed">
             Replace these with your real links. We can add a contact form later.
           </p>

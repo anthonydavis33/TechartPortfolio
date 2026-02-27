@@ -341,5 +341,158 @@ Externalizing this logic ensures the system remains scalable and adaptable. Pipe
         }
       ]
     }
+  },
+
+  {
+    slug: "",
+    title: "",
+    tag: "",
+    thumbnail: "projects/Importer.png",
+    short: "",
+    stack: ["Unreal Engine 5", "EUW", "C++", "Data Validation"],
+    links: { demo: "", repo: "", writeup: "" },
+    caseStudy: {
+      overview:`
+        
+        `,
+      problem: [
+        ""
+      ],
+
+      solution: [
+        ""
+      ],
+
+      impact: [
+        ""
+      ],
+      media: [],
+      sections: [
+        {
+          eyebrow: "Trusty Importer",
+          title: "Every project needs one!",
+          text: `
+            
+            `,
+          bullets: [
+            ""
+          ],
+          gifSrc: "projects/Importer.png"
+        },
+        {
+          eyebrow: "",
+          title: "",
+          text: `
+
+          `,
+          bullets: [
+            ""
+          ],
+          gifSrc: "projects/projectsettingsimporter.png"
+        }
+      ]
+    }
+  },
+
+  {
+    slug: "",
+    title: "",
+    tag: "",
+    thumbnail: "projects/Importer.png",
+    short: "",
+    stack: ["Unreal Engine 5", "EUW", "C++", "Data Validation"],
+    links: { demo: "", repo: "", writeup: "" },
+    caseStudy: {
+      overview:`
+        
+        `,
+      problem: [
+        ""
+      ],
+
+      solution: [
+        ""
+      ],
+
+      impact: [
+        ""
+      ],
+      media: [],
+      sections: [
+        {
+          eyebrow: "Trusty Importer",
+          title: "Every project needs one!",
+          text: `
+            
+            `,
+          bullets: [
+            ""
+          ],
+          gifSrc: "projects/Importer.png"
+        },
+        {
+          eyebrow: "",
+          title: "",
+          text: `
+
+          `,
+          bullets: [
+            ""
+          ],
+          gifSrc: "projects/projectsettingsimporter.png"
+        }
+      ]
+    }
+  },
+
+  {
+    slug: "",
+    title: "",
+    tag: "",
+    thumbnail: "projects/Importer.png",
+    short: "",
+    stack: ["Unreal Engine 5", "EUW", "C++", "Data Validation"],
+    links: { demo: "", repo: "", writeup: "" },
+    caseStudy: {
+      overview:`
+        
+        `,
+      problem: [
+        ""
+      ],
+
+      solution: [
+        ""
+      ],
+
+      impact: [
+        ""
+      ],
+      media: [],
+      sections: [
+        {
+          eyebrow: "Trusty Importer",
+          title: "Every project needs one!",
+          text: `
+            
+            `,
+          bullets: [
+            ""
+          ],
+          gifSrc: "projects/Importer.png"
+        },
+        {
+          eyebrow: "",
+          title: "",
+          text: `
+
+          `,
+          bullets: [
+            ""
+          ],
+          gifSrc: "projects/projectsettingsimporter.png"
+        }
+      ]
+    }
   }
 ];
