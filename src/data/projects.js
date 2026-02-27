@@ -344,55 +344,65 @@ Externalizing this logic ensures the system remains scalable and adaptable. Pipe
   },
 
   {
-    slug: "",
-    title: "",
-    tag: "",
-    thumbnail: "projects/Importer.png",
-    short: "",
-    stack: ["Unreal Engine 5", "EUW", "C++", "Data Validation"],
-    links: { demo: "", repo: "", writeup: "" },
-    caseStudy: {
-      overview:`
-        
-        `,
-      problem: [
-        ""
-      ],
+  slug: "armor-pipeline-and-naming",
+  title: "Armor Pipeline & Naming Conventions",
+  tag: "Pipeline Ownership",
+  thumbnail: "projects/AssetNamingConventions.png",
+  short:
+    "Owned the end-to-end armor pipeline and naming conventions, aligning multiple teams on standards that scale—then drove approval through leads and executive stakeholders.",
+  stack: ["Unreal Engine 5", "Pipeline Design", "Naming Standards", "Cross-team Alignment", "Documentation"],
+  links: { demo: "", repo: "", writeup: "" },
 
-      solution: [
-        ""
-      ],
+  caseStudy: {
+    overview: `
+I owned the definition, documentation, and adoption of the armor pipeline and naming conventions—ensuring the workflow was understandable for content creators, enforceable by tools, and scalable across large character sets. This included aligning requirements across multiple teams and driving the final standard through lead and executive approval.
+    `.trim(),
 
-      impact: [
-        ""
-      ],
-      media: [],
-      sections: [
-        {
-          eyebrow: "Trusty Importer",
-          title: "Every project needs one!",
-          text: `
-            
-            `,
-          bullets: [
-            ""
-          ],
-          gifSrc: "projects/Importer.png"
-        },
-        {
-          eyebrow: "",
-          title: "",
-          text: `
+    problem: [
+      "Without a single agreed-upon pipeline, content production risks drift: inconsistent folder structures, mismatched naming, and ambiguous ownership of steps.",
+      "Inconsistent conventions increase tool complexity, reduce validation reliability, and create downstream bugs that are expensive to diagnose.",
+      "Large character libraries require standards that scale across asset types, variants, and long-term production changes."
+    ],
 
-          `,
-          bullets: [
-            ""
-          ],
-          gifSrc: "projects/projectsettingsimporter.png"
-        }
-      ]
-    }
-  },
+    solution: [
+      "Designed a clear end-to-end armor pipeline that defines responsibilities, review points, and required validations across teams.",
+      "Established naming and folder conventions that map cleanly to tool automation and data validation, reducing ambiguity and enabling enforcement.",
+      "Drove alignment and approval across discipline leads and executive stakeholders to ensure adoption and long-term consistency."
+    ],
+
+    impact: [
+      "Improved consistency and predictability across armor content production, reducing rework and correctness drift.",
+      "Enabled stronger automation and validation by standardizing the inputs tools depend on (paths, naming, and structure).",
+      "Created a shared reference that accelerates onboarding and keeps cross-team collaboration smoother during high-volume production."
+    ],
+
+    // If your detail page shows media at the bottom, this will do exactly what you want.
+    media: [
+      "projects/ArmorPipe1.png",
+      "projects/ArmorPipe2.png",
+      "projects/AssetNamingConventions.png"
+    ],
+
+    sections: [
+      {
+        eyebrow: "Pipeline Owner",
+        title: "A scalable standard for high-volume armor production",
+        text: `
+This work formalized how armor moves from request → creation → import → validation → approval, and it codified the naming and folder structure needed to keep a large character library stable over time. I owned the effort end-to-end: gathering requirements, resolving cross-team constraints, documenting the final standard, and driving it through reviews with discipline leads and executive stakeholders.
+
+The result is a pipeline that is easier to follow, easier to validate, and easier to automate—reducing ambiguity for artists while enabling tools to reliably enforce correctness.
+        `.trim(),
+        bullets: [
+          "Defined the end-to-end pipeline flow and the review/validation gates.",
+          "Standardized naming + folder structure to support automation and drift prevention.",
+          "Owned cross-team alignment and approvals to ensure adoption."
+        ],
+        // No inline gif for this section — the images live in the bottom media gallery.
+        gifSrc: ""
+      }
+    ]
+  }
+},
 
   {
     slug: "",

@@ -34,15 +34,11 @@ export default function Home() {
               </div>
 
               <h1 className="mt-4 text-3xl md:text-5xl font-semibold text-neutral-50 leading-tight">
-                I build production tools that keep character pipelines fast, consistent, and shippable.
+                I build production tools that keep pipelines fast, consistent, and shippable.
               </h1>
 
               <p className="mt-4 text-neutral-300 leading-relaxed">
                 Artist-first workflows in Unreal—batch operations, validation, and smart automation—so teams spend less time fighting setup and more time making great content.
-              </p>
-
-              <p className="mt-3 text-sm text-neutral-400">
-                Recent work: Lookdev Diorama Tool • Delta-aware Asset Importer • One-click Cloth LOD Automation
               </p>
 
               <div className="mt-5 flex flex-wrap gap-2">
@@ -70,7 +66,7 @@ export default function Home() {
                 />
                 <Pill
                   icon={CheckCircle2}
-                  title="Validation + drift prevention"
+                  title="Validation"
                   text="Systems that detect mismatches, enforce structure, and surface only actionable issues."
                 />
                 <Pill
