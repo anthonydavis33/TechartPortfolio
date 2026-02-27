@@ -28,7 +28,7 @@ export default function Resume() {
 
       <div className="mt-6 glass-card rounded-2xl shadow-soft overflow-hidden border border-neutral-800">
         <embed
-          src={asset(pdfUrl)}
+          src={asset(pdfPath)}
           type="application/pdf"
           className="w-full"
           style={{ height: "85vh" }}
