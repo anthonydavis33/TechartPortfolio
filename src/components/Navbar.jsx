@@ -3,8 +3,8 @@ import { Mail, ExternalLink } from "lucide-react";
 const base = import.meta.env.BASE_URL;
 
 const nav = [
-  { href: `${base}#projects`, label: "Projects" },
-  { href: `${base}resume`, label: "Resume" },
+  { href: `${base}#work`, label: "Projects" },
+  { href: `${base}#/resume`, label: "Resume" },
   { href: `${base}#contact`, label: "Contact" }
 ];
 
@@ -35,14 +35,6 @@ export default function Navbar() {
           >
             <Mail className="h-4 w-4" />
             <span className="hidden sm:inline">Reach out</span>
-          </a>
-
-          <a
-            href={`${base}#projects`}
-            className="inline-flex items-center gap-2 rounded-xl bg-accent-600/90 px-3 py-2 text-sm text-white hover:bg-accent-600 transition"
-          >
-            <ExternalLink className="h-4 w-4" />
-            <span className="hidden sm:inline">View projects</span>
           </a>
         </div>
       </div>
