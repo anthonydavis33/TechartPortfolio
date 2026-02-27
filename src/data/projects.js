@@ -349,7 +349,7 @@ Externalizing this logic ensures the system remains scalable and adaptable. Pipe
   tag: "Pipeline Ownership",
   thumbnail: "projects/AssetNamingConventions.png",
   short:
-    "Owned the end-to-end armor pipeline and naming conventions, aligning multiple teams on standards that scale—then drove approval through leads and executive stakeholders.",
+    "Owned the end to end armor pipeline and naming conventions, aligning multiple teams on standards that scale. Then drove approval through leads and executive stakeholders.",
   stack: ["Unreal Engine 5", "Pipeline Design", "Naming Standards", "Cross-team Alignment", "Documentation"],
   links: { demo: "", repo: "", writeup: "" },
 

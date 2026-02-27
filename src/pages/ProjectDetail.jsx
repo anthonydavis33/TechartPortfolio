@@ -70,16 +70,16 @@ function TextGifBlock({ item, flip = false }) {
 
         {/* GIF / Media */}
         <div className="rounded-2xl border border-neutral-800 overflow-hidden bg-neutral-950/40">
-          <div className="h-100 md:h-115 w-full">
-            <img
-              {section.gifSrc?.trim?.() && (
-                <img src={asset(section.gifSrc)} alt="" className="..." />
-              )}
-              alt={item.alt || item.title}
-              className="h-full w-full object-cover"
-              loading="lazy"
-            />
-          </div>
+          {section.gifSrc?.trim() && (
+            <div className="h-100 md:h-115 w-full">
+              <img
+                src={asset(section.gifSrc)}
+                alt=""
+                className="w-full h-full object-cover rounded-xl"
+                loading="lazy"
+              />
+            </div>
+          )}
           {item.caption ? (
             <div className="px-4 py-3 text-sm text-neutral-400 border-t border-neutral-800">
               {item.caption}
