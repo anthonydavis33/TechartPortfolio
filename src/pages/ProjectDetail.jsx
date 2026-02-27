@@ -72,7 +72,9 @@ function TextGifBlock({ item, flip = false }) {
         <div className="rounded-2xl border border-neutral-800 overflow-hidden bg-neutral-950/40">
           <div className="h-100 md:h-115 w-full">
             <img
-              src={asset(item.gifSrc)}
+              {section.gifSrc?.trim?.() && (
+                <img src={asset(section.gifSrc)} alt="" className="..." />
+              )}
               alt={item.alt || item.title}
               className="h-full w-full object-cover"
               loading="lazy"
@@ -161,6 +163,22 @@ export default function ProjectDetail() {
           </div>
         </div>
 
+        {/* Case Study Blocks */}
+        <div className="mt-6 grid gap-4 md:grid-cols-3">
+          <BulletBlock title="Problem" items={cs.problem} className="glass-card case-gradient-problem rounded-2xl p-5 shadow-soft border border-rose-500/25" />
+          <BulletBlock title="Solution" items={cs.solution} className="glass-card case-gradient-solution rounded-2xl p-5 shadow-soft border border-emerald-500/25 bg-emerald-950/10" />
+          <BulletBlock title="Impact" items={cs.impact} className="glass-card case-gradient-impact rounded-2xl p-5 shadow-soft border border-sky-500/25 bg-sky-950/10" />
+        </div>
+
+        {/* Sections of text and gif */}
+        {cs.sections?.length ? (
+          <div className="mt-6 space-y-4">
+            {cs.sections.map((item, i) => (
+              <TextGifBlock key={item.title} item={item} flip={i % 2 === 1} />
+            ))}
+          </div>
+        ) : null}
+
         {/* Media */}
         {cs.media?.length ? (
           <div className="mt-6 grid gap-4 md:grid-cols-2">
@@ -178,22 +196,6 @@ export default function ProjectDetail() {
                   <div className="mt-3 text-sm text-neutral-400">{m.caption}</div>
                 )}
               </div>
-            ))}
-          </div>
-        ) : null}
-
-        {/* Case Study Blocks */}
-        <div className="mt-6 grid gap-4 md:grid-cols-3">
-          <BulletBlock title="Problem" items={cs.problem} className="glass-card case-gradient-problem rounded-2xl p-5 shadow-soft border border-rose-500/25" />
-          <BulletBlock title="Solution" items={cs.solution} className="glass-card case-gradient-solution rounded-2xl p-5 shadow-soft border border-emerald-500/25 bg-emerald-950/10" />
-          <BulletBlock title="Impact" items={cs.impact} className="glass-card case-gradient-impact rounded-2xl p-5 shadow-soft border border-sky-500/25 bg-sky-950/10" />
-        </div>
-
-        {/* Sections of text and gif */}
-        {cs.sections?.length ? (
-          <div className="mt-6 space-y-4">
-            {cs.sections.map((item, i) => (
-              <TextGifBlock key={item.title} item={item} flip={i % 2 === 1} />
             ))}
           </div>
         ) : null}
