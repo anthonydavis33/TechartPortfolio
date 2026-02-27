@@ -2,13 +2,34 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 export default function CodeBlock({ title, code, language = "cpp" }) {
+  // Bulletproof guard:
+  // - handles null/undefined
+  // - handles empty strings
+  // - handles whitespace-only strings
+  // - handles non-string inputs safely
+  const safeCode =
+    typeof code === "string"
+      ? code
+      : code == null
+      ? ""
+      : String(code);
+
+  if (!safeCode.trim()) return null;
+
+  const safeTitle =
+    typeof title === "string"
+      ? title.trim()
+      : title == null
+      ? ""
+      : String(title).trim();
+
   return (
     <div className="glass-card rounded-2xl p-5 shadow-soft">
-      {title && (
+      {safeTitle ? (
         <div className="mb-3 text-sm font-semibold text-neutral-200 tracking-wide">
-          {title}
+          {safeTitle}
         </div>
-      )}
+      ) : null}
 
       <div className="rounded-xl border border-neutral-800 overflow-hidden">
         <SyntaxHighlighter
@@ -30,7 +51,7 @@ export default function CodeBlock({ title, code, language = "cpp" }) {
           wrapLongLines={false}
           showLineNumbers={false}
         >
-          {code}
+          {safeCode}
         </SyntaxHighlighter>
       </div>
     </div>

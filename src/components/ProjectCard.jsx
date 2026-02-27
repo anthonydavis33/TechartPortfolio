@@ -20,7 +20,7 @@ function SmallLink({ href, icon: Icon, label }) {
 
 export default function ProjectCard({ project }) {
   return (
-    <div className="glass-card card-sheen group rounded-2xl shadow-soft overflow-hidden">
+    <div className="glass-card card-sheen group rounded-2xl shadow-soft overflow-hidden flex flex-col">
       {/* Thumbnail */}
       <Link to={`/projects/${project.slug}`} className="block">
         <div className="relative aspect-[16/9] overflow-hidden">
@@ -34,14 +34,16 @@ export default function ProjectCard({ project }) {
           <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
 
           {/* Tags */}
+          {/* Commenting out the tag for now
           <div className="absolute top-3 left-3 rounded-full border border-neutral-800 bg-neutral-950/70 px-3 py-1 text-xs text-neutral-100 backdrop-blur">
             {project.tag}
           </div>
+          */}
         </div>
       </Link>
 
       {/* Condensed content */}
-      <div className="p-5">
+      <div className="p-5 flex flex-col flex-grow">
         <div className="flex items-start justify-between gap-3">
           <h3 className="text-base font-semibold text-neutral-50 leading-snug">
             <Link to={`/projects/${project.slug}`} className="hover:text-white">
@@ -72,10 +74,10 @@ export default function ProjectCard({ project }) {
         </div>
 
         {/* Buttons */}
-        <div className="mt-4 flex flex-wrap items-center gap-2">
+        <div className="mt-auto pt-4">
           <Link
             to={`/projects/${project.slug}`}
-            className="inline-flex items-center gap-2 rounded-lg bg-accent-600/90 px-3 py-2 text-xs font-semibold text-white hover:bg-accent-600 transition"
+            className="inline-flex items-center rounded-lg border border-emerald-700/40 bg-emerald-900/30 px-4 py-2 text-sm font-medium text-emerald-300 transition hover:bg-emerald-800/40"
           >
             <ArrowUpRight className="h-4 w-4" />
             Deep dive

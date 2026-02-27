@@ -200,11 +200,13 @@ export default function ProjectDetail() {
 
         {/* CodeBlock */}
         <div className="flex flex-col gap-10">
-          <CodeBlock
-            title={cs.codeTitle}
-            code={cs.code}
-            language="cpp"
-          />
+          {project.code && project.code.trim() !== "" && (
+            <CodeBlock
+              title="Code Implementation"
+              code={project.code}
+              language="cpp"
+            />
+          )}
         </div>
       </div>
     </div>

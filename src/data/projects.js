@@ -272,7 +272,7 @@ export const projects = [
     slug: "asset-import-validation-tool",
     title: "Asset Importer & Variant Resolver",
     tag: "Pipeline Automation",
-    thumbnail: "projects/pcg-workflow.jpg",
+    thumbnail: "projects/Importer.png",
     short:
       "A C++ Unreal Engine importer that detects engine vs. local assets, surfaces only missing data, and intelligently resolves texture variants through parent mesh inheritance.",
     stack: ["Unreal Engine 5", "EUW", "C++", "Data Validation"],
@@ -327,16 +327,9 @@ Because this system interacts with proprietary data structures and validation ru
           eyebrow: "Configurable Pipeline Rules",
           title: "Now the designers have the power!",
           text: `
-To prevent slot logic, asset paths, and validation rules from being hardcoded, I extended Unreal's Project Settings with custom configuration panels specific to this importer.
+To eliminate hardcoded slot logic and asset validation rules, I implemented custom Unreal Project Settings panels dedicated to the importer. These configuration layers define parent resolution behavior, asset path expectations, and variant handling rules at the project level.
 
-These settings define:
-
-• Slot-to-parent resolution rules  
-• Asset path expectations  
-• Variant handling behavior  
-• Validation constraints  
-
-By externalizing these rules, the importer remains flexible and scalable. Designers and pipeline owners can adjust behavior without modifying source code, allowing the tool to adapt across different content types and production needs.
+Externalizing this logic ensures the system remains scalable and adaptable. Pipeline owners can refine behavior without touching source code, reducing technical debt while maintaining production flexibility.
 `,
           bullets: [
             "Extended Unreal Project Settings with custom importer configuration panels.",
