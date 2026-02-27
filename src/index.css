@@ -145,3 +145,27 @@ a:focus-visible, button:focus-visible {
 .card-sheen:hover::after {
   animation: sheen-swipe 520ms ease forwards;
 }
+
+/* Mouse-follow subtle highlight for glass cards */
+.glass-interactive {
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-interactive::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 180ms ease;
+  background: radial-gradient(
+    600px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255, 255, 255, 0.06),
+    transparent 55%
+  );
+}
+
+.glass-interactive:hover::after {
+  opacity: 1;
+}

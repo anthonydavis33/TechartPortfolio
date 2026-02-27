@@ -184,9 +184,9 @@ export default function ProjectDetail() {
 
         {/* Case Study Blocks */}
         <div className="mt-6 grid gap-4 md:grid-cols-3">
-          <BulletBlock title="Problem" items={cs.problem} className="case-gradient-problem" />
-          <BulletBlock title="Solution" items={cs.solution} className="case-gradient-solution" />
-          <BulletBlock title="Impact" items={cs.impact} className="case-gradient-impact" />
+          <BulletBlock title="Problem" items={cs.problem} className="glass-card case-gradient-problem rounded-2xl p-5 shadow-soft border border-rose-500/25" />
+          <BulletBlock title="Solution" items={cs.solution} className="glass-card case-gradient-solution rounded-2xl p-5 shadow-soft border border-emerald-500/25 bg-emerald-950/10" />
+          <BulletBlock title="Impact" items={cs.impact} className="glass-card case-gradient-impact rounded-2xl p-5 shadow-soft border border-sky-500/25 bg-sky-950/10" />
         </div>
 
         {/* Sections of text and gif */}
@@ -200,13 +200,7 @@ export default function ProjectDetail() {
 
         {/* CodeBlock */}
         <div className="flex flex-col gap-10">
-          {project.code && project.code.trim() !== "" && (
-            <CodeBlock
-              title="Code Implementation"
-              code={project.code}
-              language="cpp"
-            />
-          )}
+          <CodeBlock title={cs?.codeTitle} code={cs?.code} language="cpp" />
         </div>
       </div>
     </div>
