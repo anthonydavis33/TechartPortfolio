@@ -38,7 +38,7 @@ export default function Home() {
               </h1>
 
               <p className="mt-4 text-neutral-300 leading-relaxed">
-                Artist-first workflows in Unreal—batch operations, validation, and smart automation—so teams spend less time fighting setup and more time making great content.
+                Artist-first workflows, validation, and smart automation. All for teams to spend less time fighting setup and more time making great content.
               </p>
 
               <div className="mt-5 flex flex-wrap gap-2">
@@ -77,7 +77,7 @@ export default function Home() {
               </div>
 
               <p className="mt-6 text-neutral-300 leading-relaxed">
-                My focus is simple: ship tools that artists trust, and pipelines that don’t drift.
+                My focus is simple: ship tools that artists trust, and pipelines that make sense.
               </p>
             </div>
 
