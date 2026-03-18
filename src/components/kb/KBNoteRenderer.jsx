@@ -74,8 +74,9 @@ function KBCode({ className, children, ...props }) {
   );
 }
 
-function KBLink({ href, children, ...props }) {
+function KBLink({ href, children, className: _, ...props }) {
   const navigate = useNavigate();
+  const linkStyle = "text-blue-400 hover:text-blue-300 underline decoration-blue-400/60 hover:decoration-blue-300 transition";
 
   // Internal KB links start with #/kb/
   if (href?.startsWith("#/kb/")) {
@@ -86,7 +87,7 @@ function KBLink({ href, children, ...props }) {
           e.preventDefault();
           navigate(href.replace("#", ""));
         }}
-        className="text-accent-400 hover:text-accent-500 underline decoration-accent-400/30 hover:decoration-accent-500/60 transition"
+        className={linkStyle}
         {...props}
       >
         {children}
@@ -99,7 +100,7 @@ function KBLink({ href, children, ...props }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="text-accent-400 hover:text-accent-500 underline decoration-accent-400/30 hover:decoration-accent-500/60 transition"
+      className={linkStyle}
       {...props}
     >
       {children}
