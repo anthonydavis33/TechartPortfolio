@@ -65,6 +65,17 @@ export default function Navbar() {
             href="#"
             onClick={(e) => {
               e.preventDefault();
+              navigate("/kb");
+            }}
+            className="rounded-xl px-3 py-2 text-sm text-neutral-200 hover:text-white hover:bg-neutral-900/60 transition"
+          >
+            Knowledge Base
+          </a>
+
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
               goToSection("contact");
             }}
             className="rounded-xl px-3 py-2 text-sm text-neutral-200 hover:text-white hover:bg-neutral-900/60 transition"

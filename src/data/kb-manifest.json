@@ -1,0 +1,40 @@
+{
+  "notes": [
+    {
+      "slug": "getting-started",
+      "filePath": "kb/getting-started.md",
+      "title": "Getting Started with UE5",
+      "tags": [
+        "unreal",
+        "getting-started"
+      ],
+      "folder": ""
+    },
+    {
+      "slug": "unreal/blueprints-basics",
+      "filePath": "kb/unreal/blueprints-basics.md",
+      "title": "Blueprints Basics",
+      "tags": [
+        "unreal",
+        "blueprints",
+        "visual-scripting"
+      ],
+      "folder": "unreal"
+    },
+    {
+      "slug": "unreal/nanite-overview",
+      "filePath": "kb/unreal/nanite-overview.md",
+      "title": "Nanite Overview",
+      "tags": [
+        "unreal",
+        "nanite",
+        "rendering",
+        "optimization"
+      ],
+      "folder": "unreal"
+    }
+  ],
+  "folders": [
+    "unreal"
+  ]
+}
