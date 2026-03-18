@@ -1,5 +1,7 @@
 # Unreal Engine 5 Rendering Pipeline – FXSystemPreRender
 
+`#niagara` `#particles` `#fx` `#rendering-pipeline` `#pre-render` `#gpu-compute` `#async-compute` `#performance` `#profiling` `#ue5` `#tech-art` `#simulation` `#threading`
+
 > Stage: **FXSystemPreRender**  
 > Phase: Pre-Render / Simulation Prep  
 > Purpose: Prepare all FX systems before any rendering passes begin  
@@ -92,6 +94,8 @@ The game thread and render thread must **sync** at the end of this stage to guar
 | Expensive Data Interfaces | NDIs that sample skeletal meshes, read render targets, or query physics | Cache NDI results; avoid per-particle skeletal mesh samples at high counts |
 | Simulation Stages | Custom GPU compute stages run each tick; each stage is a full dispatch | Profile with `fx.Niagara.DumpNiagaraStageInfo`; combine stages where possible |
 
+> **⚠️ Unbounded GPU particle counts can silently exhaust memory.** Without a max particle cap, a GPU sim emitter under stress (e.g. a looping spawn effect that isn't being properly deactivated) can grow until it hits GPU memory limits. This will not throw a clear error — it will manifest as hitches, corruption, or crashes on lower-end hardware. Always set a max particle count.
+
 ---
 
 ## Key Systems and Components
@@ -106,7 +110,23 @@ Manages GPU-side particle count buffers. This is what allows indirect draw calls
 NDIs feed external data *into* Niagara simulations — skeletal mesh surfaces, audio spectrum data, collision scene queries, render target reads, etc. They tick as part of this stage and can be a hidden cost. A GPU simulation reading a skeletal mesh NDI at 10,000 particles is doing significant work here.
 
 ### Simulation Stages
-A Niagara feature allowing custom compute shader passes to run *within* the GPU simulation loop (e.g. fluid simulation, neighbor searches, custom force fields). Each stage adds a compute dispatch. These show up in the GPU Visualizer under Niagara compute work.
+A Niagara feature allowing custom compute shader passes to run *within* the GPU simulation loop (e.g. fluid simulation, neighbor searches, custom force fields). Each stage adds a compute dispatch. These appear in Unreal Insights under the GPU track as Niagara compute workloads.
+
+> **⚠️ Simulation Stages have per-dispatch cost regardless of particle count.** An emitter with 10 particles and 3 Simulation Stages still dispatches 3 compute passes per frame. Don't add Simulation Stages to effects that don't genuinely need them.
+
+---
+
+## 📋 Reader Notes
+
+> **Engine Version:** This document targets **UE5.1+**. Niagara is treated as the primary FX system throughout. Cascade is considered legacy — if your project still uses Cascade emitters, `stat FX` will surface them, but most of the threading and buffer concepts here do not apply to them.
+
+> **Audience:** This doc assumes familiarity with Unreal's render thread / game thread split and basic Niagara authoring. If the threading model section feels unfamiliar, read the Unreal Engine Parallel Rendering Overview documentation first.
+
+> **Platform Variance:** Async compute scheduling behaves differently across platforms. On PC (DX12/Vulkan), overlap is driver and hardware dependent. On console, async compute queues are more predictable and this stage is often where the most platform-specific tuning happens. PC profiling results may not translate directly to console budgets.
+
+> **Threshold Calibration:** The `> 1ms` flag in Red Flags assumes a **60fps frame budget (~16.6ms total)**. Adjust thresholds for your target framerate and platform.
+
+> **CVar Stability:** Console variable names can change between minor engine versions. Always verify current names in the editor's CVar browser (open console with `~`, type the prefix) or in engine source before using them in automation or config files.
 
 ---
 
@@ -154,7 +174,13 @@ r.Niagara.GPUParticles.OverlapComputeAndDraw  // Toggle async compute overlap
 ### Niagara Authoring
 - Reduce spawn counts; use Niagara Scalability Groups to scale with platform/quality settings
 - Prefer `Sim Target = GPU Compute` for high-count emitters
+
+> **⚠️ CPU → GPU sim migration is not always a win.** GPU simulation has fixed per-dispatch overhead. Migrating a CPU emitter with fewer than ~500 particles to GPU sim can *increase* frame cost. Profile before and after.
+
 - Use **fixed bounds** — dynamic bounds recalculate every frame and block tight culling
+
+> **⚠️ Fixed bounds that are too small will cause incorrect culling.** If you set fixed bounds conservatively and the effect exceeds them at runtime, the emitter will be culled even when clearly visible on screen. Always validate fixed bounds against the effect's real-world scale range.
+
 - Add **Niagara LODs** (Significance-based) to reduce simulation fidelity at distance
 - Reduce collision complexity — prefer depth-buffer collision over CPU scene queries
 - Limit expensive Data Interfaces to hero effects only
@@ -165,8 +191,14 @@ r.Niagara.GPUParticles.OverlapComputeAndDraw  // Toggle async compute overlap
 ### Rendering & Project
 - Reduce translucent particle overdraw — stack cost compounds per layer
 - Use `r.SeparateTranslucency 0` on lower-end targets to reduce translucency pass overhead (tradeoff: affects DoF interaction)
+
+> **⚠️ `r.SeparateTranslucency 0` has visual side effects.** Disabling separate translucency affects how Depth of Field interacts with translucent particles — they will no longer be excluded from the DoF blur. Test visually in representative scenes before shipping with this setting.
+
 - Disable FX systems when off-screen using significance handlers or `UNiagaraComponent::SetPaused`
 - Avoid `SpawnSystemAtLocation` in hot paths — prefer pooled components
+
+> **⚠️ `SpawnSystemAtLocation` allocates a new component every call.** If called in a tick or a frequently-fired event, this bypasses pooling, causes garbage collection pressure, and can produce cascading hitches. Use `UNiagaraFunctionLibrary::SpawnSystemAtLocation` only for fire-and-forget one-shots; use a pooled component for anything recurring.
+
 - Limit GPU Simulation Stages to effects where the visual return justifies the compute cost
 
 ---
