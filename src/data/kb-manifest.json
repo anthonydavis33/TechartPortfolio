@@ -32,9 +32,31 @@
         "optimization"
       ],
       "folder": "unreal"
+    },
+    {
+      "slug": "unreal/RenderDependancyGraph/01-FXSystemPreRender",
+      "filePath": "kb/unreal/RenderDependancyGraph/01-FXSystemPreRender.md",
+      "title": "01 FXSystemPreRender",
+      "tags": [
+        "niagara",
+        "particles",
+        "fx",
+        "rendering-pipeline",
+        "pre-render",
+        "gpu-compute",
+        "async-compute",
+        "performance",
+        "profiling",
+        "ue5",
+        "tech-art",
+        "simulation",
+        "threading"
+      ],
+      "folder": "unreal/RenderDependancyGraph"
     }
   ],
   "folders": [
-    "unreal"
+    "unreal",
+    "unreal/RenderDependancyGraph"
   ]
 }
