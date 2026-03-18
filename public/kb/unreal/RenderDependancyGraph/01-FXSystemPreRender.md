@@ -1,18 +1,12 @@
 ---
 tags:
   - niagara
-  - particles
-  - fx
   - rendering-pipeline
   - pre-render
-  - gpu-compute
-  - async-compute
   - performance
   - profiling
   - ue5
   - tech-art
-  - simulation
-  - threading
 ---
 
 # Unreal Engine 5 Rendering Pipeline – FXSystemPreRender
