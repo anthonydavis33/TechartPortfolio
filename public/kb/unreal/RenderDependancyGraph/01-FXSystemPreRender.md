@@ -125,6 +125,8 @@ Key named events to look for in the **Game Thread** and **Render Thread** tracks
 
 > Also check the **Task Graph** view — CPU Niagara sim tasks will appear on worker threads, not the main thread.
 
+> In the **GPU track**, Niagara compute dispatches appear directly under this stage as compute workloads. This is distinct from particle *rendering* cost, which appears later under translucency. Measure both separately — a system can be cheap to simulate but expensive to draw, or vice versa.
+
 ### Stat Commands
 
 ```
@@ -133,9 +135,6 @@ stat NiagaraVerbose   // Per-system breakdown — identifies expensive individua
 stat FX               // Legacy Cascade stats (if any Cascade systems still in use)
 stat GPU              // GPU frame breakdown; shows Niagara compute under "Particle Simulation"
 ```
-
-### GPU Visualizer (`ProfileGPU` or `Ctrl+Shift+,`)
-Niagara GPU compute dispatches appear **directly in this stage** as compute workloads — look for `Niagara` entries in the compute section. This is distinct from particle *rendering* cost, which appears later under translucency. Both costs are real and should be measured separately.
 
 ### Useful Console Variables for Debugging
 
