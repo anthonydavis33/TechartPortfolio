@@ -10,13 +10,15 @@ function parseFrontmatter(raw) {
   const content = raw.slice(match[0].length).trim();
   const title =
     fm.match(/title:\s*(.+)/)?.[1]?.trim().replace(/^["']|["']$/g, "") || "";
-  const tagsMatch = fm.match(/tags:\s*\[([^\]]*)\]/);
-  const tags = tagsMatch
-    ? tagsMatch[1]
-        .split(",")
-        .map((t) => t.trim().replace(/^["']|["']$/g, ""))
-        .filter(Boolean)
-    : [];
+  // Support both inline [a, b] and YAML list (- a\n- b) tag formats
+  const inlineMatch = fm.match(/tags:\s*\[([^\]]*)\]/);
+  const listMatches = fm.match(/tags:\s*\n((?:\s+-\s+.+\n?)+)/);
+  let tags = [];
+  if (inlineMatch) {
+    tags = inlineMatch[1].split(",").map((t) => t.trim().replace(/^["']|["']$/g, "")).filter(Boolean);
+  } else if (listMatches) {
+    tags = listMatches[1].match(/-\s+(.+)/g)?.map((t) => t.replace(/^- \s*/, "").trim().replace(/^["']|["']$/g, "")).filter(Boolean) || [];
+  }
 
   return { title, tags, content };
 }
