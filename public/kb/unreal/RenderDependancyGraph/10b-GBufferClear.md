@@ -1,11 +1,7 @@
 ---
 tags:
-  - rendering-pipeline
   - gbuffer
   - housekeeping
-  - basepass
-  - ue5
-  - deferred-rendering
 ---
 
 # Unreal Engine 5 Rendering Pipeline – GBufferClear

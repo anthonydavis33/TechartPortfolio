@@ -1,11 +1,6 @@
 ---
 tags:
-  - rendering-pipeline
   - lumen
-  - global-illumination
-  - ambient-occlusion
-  - performance
-  - ue5
 ---
 
 # Unreal Engine 5 Rendering Pipeline – Diffuse Indirect & AO

@@ -1,11 +1,7 @@
 ---
 tags:
-  - rendering-pipeline
   - lumen
   - housekeeping
-  - global-illumination
-  - ue5
-  - deferred-rendering
 ---
 
 # Unreal Engine 5 Rendering Pipeline – ClearLumenBuffers

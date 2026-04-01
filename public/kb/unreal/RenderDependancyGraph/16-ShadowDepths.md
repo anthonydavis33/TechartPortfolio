@@ -1,11 +1,7 @@
 ---
 tags:
-  - rendering-pipeline
   - shadows
-  - virtual-shadow-maps
   - nanite
-  - performance
-  - ue5
 ---
 
 # Unreal Engine 5 Rendering Pipeline – Shadow Depths

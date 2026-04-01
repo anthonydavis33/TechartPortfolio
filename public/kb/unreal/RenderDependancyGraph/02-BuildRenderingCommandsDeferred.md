@@ -1,16 +1,9 @@
 ---
 tags:
-  - rendering-pipeline
-  - culling
   - nanite
   - lod
   - hlod
   - instancing
-  - performance
-  - profiling
-  - ue5
-  - tech-art
-  - world-partition
 ---
 
 # Unreal Engine 5 Rendering Pipeline – BuildRenderingCommandsDeferred / CullInstances

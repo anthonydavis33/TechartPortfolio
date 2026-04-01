@@ -1,10 +1,6 @@
 ---
 tags:
-  - rendering-pipeline
   - shadows
-  - virtual-shadow-maps
-  - performance
-  - ue5
 ---
 
 # Unreal Engine 5 Rendering Pipeline – Virtual Shadow Map Array Build (Page Allocation)

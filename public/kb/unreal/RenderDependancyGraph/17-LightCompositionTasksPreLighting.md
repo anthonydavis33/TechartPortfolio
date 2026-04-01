@@ -1,12 +1,7 @@
 ---
 tags:
-  - rendering-pipeline
   - deferred-decals
   - ssao
-  - pre-lighting
-  - gbuffer
-  - performance
-  - ue5
 ---
 
 # Unreal Engine 5 Rendering Pipeline – LightCompositionTasksPreLighting

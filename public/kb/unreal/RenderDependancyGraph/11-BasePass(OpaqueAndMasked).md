@@ -1,12 +1,8 @@
 ---
 tags:
-  - rendering-pipeline
-  - basepass
   - gbuffer
   - nanite
   - materials
-  - performance
-  - ue5
 ---
 
 # Unreal Engine 5 Rendering Pipeline – BasePass (Opaque & Masked)

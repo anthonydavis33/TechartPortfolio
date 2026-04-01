@@ -1,12 +1,7 @@
 ---
 tags:
   - niagara
-  - rendering-pipeline
   - pre-render
-  - performance
-  - profiling
-  - ue5
-  - tech-art
 ---
 
 # Unreal Engine 5 Rendering Pipeline – FXSystemPreRender

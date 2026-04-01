@@ -1,11 +1,7 @@
 ---
 tags:
-  - rendering-pipeline
   - sky-atmosphere
   - lut
-  - environment-lighting
-  - performance
-  - ue5
 ---
 
 # Unreal Engine 5 Rendering Pipeline – Sky Atmosphere LUTs

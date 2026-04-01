@@ -1,16 +1,9 @@
 ---
 tags:
-  - rendering-pipeline
-  - prepass
   - early-z
   - nanite
   - hzb
   - wpo
-  - performance
-  - profiling
-  - ue5
-  - tech-art
-  - gpu
 ---
 
 # Unreal Engine 5 Rendering Pipeline – PrePass (DepthPassParallel)

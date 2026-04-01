@@ -1,11 +1,8 @@
 ---
 tags:
-  - rendering-pipeline
   - water
   - depth
   - refraction
-  - performance
-  - ue5
 ---
 
 # Unreal Engine 5 Rendering Pipeline – Single Layer Water Depth Prepass

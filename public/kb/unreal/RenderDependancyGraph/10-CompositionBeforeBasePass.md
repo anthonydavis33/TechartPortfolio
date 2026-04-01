@@ -1,11 +1,7 @@
 ---
 tags:
-  - rendering-pipeline
   - sky-atmosphere
   - volumetric-clouds
-  - basepass
-  - performance
-  - ue5
 ---
 
 # Unreal Engine 5 Rendering Pipeline – Composition Before BasePass

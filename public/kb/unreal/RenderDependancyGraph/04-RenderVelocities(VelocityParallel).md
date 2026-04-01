@@ -1,11 +1,7 @@
 ---
 tags:
-  - rendering-pipeline
   - velocity
   - motion-vectors
-  - performance
-  - profiling
-  - ue5
 ---
 
 # Unreal Engine 5 Rendering Pipeline – RenderVelocities (VelocityParallel)

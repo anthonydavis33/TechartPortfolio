@@ -1,11 +1,7 @@
 ---
 tags:
   - nanite
-  - rendering-pipeline
   - visibility-buffer
-  - gpu-driven
-  - performance
-  - ue5
 ---
 
 # Unreal Engine 5 Rendering Pipeline – Nanite Visibility Buffer (Draw Geometry)

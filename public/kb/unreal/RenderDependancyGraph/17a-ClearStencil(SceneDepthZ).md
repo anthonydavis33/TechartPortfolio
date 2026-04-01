@@ -1,11 +1,8 @@
 ---
 tags:
-  - rendering-pipeline
   - stencil
   - depth
   - housekeeping
-  - ue5
-  - deferred-rendering
 ---
 
 # Unreal Engine 5 Rendering Pipeline – ClearStencil (SceneDepthZ)
