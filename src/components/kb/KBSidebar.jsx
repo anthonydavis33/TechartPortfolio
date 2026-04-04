@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Search, ChevronRight, ChevronDown, FileText, FolderOpen, X } from "lucide-react";
+import { Search, ChevronRight, ChevronDown, FileText, FolderOpen, X, Tags } from "lucide-react";
 import { useKBSearch, useAllTags } from "../../hooks/useKBSearch";
 import manifest from "../../data/kb-manifest.json";
 
@@ -95,6 +95,7 @@ function NoteLink({ note, active }) {
 export default function KBSidebar({ activeSlug, isOpen, onClose }) {
   const [query, setQuery] = useState("");
   const [activeTags, setActiveTags] = useState([]);
+  const [tagsOpen, setTagsOpen] = useState(false);
   const filteredNotes = useKBSearch(query, activeTags);
   const allTags = useAllTags();
 
@@ -148,20 +149,37 @@ export default function KBSidebar({ activeSlug, isOpen, onClose }) {
 
           {/* Tags */}
           {allTags.length > 0 && (
-            <div className="flex flex-wrap gap-1.5 mb-4">
-              {allTags.map((tag) => (
-                <button
-                  key={tag}
-                  onClick={() => toggleTag(tag)}
-                  className={`px-2 py-0.5 text-xs rounded-full border transition ${
-                    activeTags.includes(tag)
-                      ? "bg-accent-400/15 border-accent-400/40 text-accent-400"
-                      : "border-neutral-800 text-neutral-500 hover:text-neutral-300 hover:border-neutral-700"
-                  }`}
-                >
-                  {tag}
-                </button>
-              ))}
+            <div className="mb-4">
+              <button
+                onClick={() => setTagsOpen((prev) => !prev)}
+                className="flex items-center gap-1.5 w-full px-1 py-1 text-xs text-neutral-500 hover:text-neutral-300 transition"
+              >
+                {tagsOpen ? <ChevronDown size={12} /> : <ChevronRight size={12} />}
+                <Tags size={12} />
+                <span>Tags</span>
+                {activeTags.length > 0 && (
+                  <span className="ml-auto px-1.5 py-0.5 text-[10px] leading-none rounded-full bg-accent-400/15 text-accent-400">
+                    {activeTags.length}
+                  </span>
+                )}
+              </button>
+              {tagsOpen && (
+                <div className="flex flex-wrap gap-1.5 mt-2 pl-1">
+                  {allTags.map((tag) => (
+                    <button
+                      key={tag}
+                      onClick={() => toggleTag(tag)}
+                      className={`px-2 py-0.5 text-xs rounded-full border transition ${
+                        activeTags.includes(tag)
+                          ? "bg-accent-400/15 border-accent-400/40 text-accent-400"
+                          : "border-neutral-800 text-neutral-500 hover:text-neutral-300 hover:border-neutral-700"
+                      }`}
+                    >
+                      {tag}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           )}
 
