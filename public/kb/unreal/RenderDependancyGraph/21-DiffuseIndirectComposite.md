@@ -1,7 +1,6 @@
 ---
 tags:
   - lumen
-  - ambient-occlusion
 ---
 
 # Unreal Engine 5 Rendering Pipeline – DiffuseIndirectComposite

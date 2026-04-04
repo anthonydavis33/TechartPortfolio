@@ -1,8 +1,6 @@
 ---
 tags:
   - nanite
-  - depth
-  - scene-depth
 ---
 
 # Unreal Engine 5 Rendering Pipeline – Nanite Emit Depth Targets

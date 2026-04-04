@@ -1,6 +1,5 @@
 ---
 tags:
-  - sky-atmosphere
   - lut
 ---
 

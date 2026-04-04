@@ -1,7 +1,6 @@
 ---
 tags:
-  - deferred-decals
-  - ssao
+  - lighting
 ---
 
 # Unreal Engine 5 Rendering Pipeline – LightCompositionTasksPreLighting

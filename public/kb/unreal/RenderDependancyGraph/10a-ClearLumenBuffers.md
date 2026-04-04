@@ -1,7 +1,6 @@
 ---
 tags:
   - lumen
-  - housekeeping
 ---
 
 # Unreal Engine 5 Rendering Pipeline – ClearLumenBuffers

@@ -1,8 +1,6 @@
 ---
 tags:
   - depth
-  - screen-space
-  - housekeeping
 ---
 
 # Unreal Engine 5 Rendering Pipeline – DownsampleDepth

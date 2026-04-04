@@ -1,8 +1,6 @@
 ---
 tags:
   - hzb
-  - occlusion
-  - lumen
 ---
 
 # Unreal Engine 5 Rendering Pipeline – HZB (BuildHZB)

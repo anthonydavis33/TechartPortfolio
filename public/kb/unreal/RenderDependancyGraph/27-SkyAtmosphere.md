@@ -1,7 +1,6 @@
 ---
 tags:
   - sky-atmosphere
-  - environment-lighting
 ---
 
 # Unreal Engine 5 Rendering Pipeline – Sky Atmosphere (Rendering Pass)

@@ -1,8 +1,6 @@
 ---
 tags:
   - stencil
-  - depth
-  - housekeeping
 ---
 
 # Unreal Engine 5 Rendering Pipeline – ClearStencil (SceneDepthZ)

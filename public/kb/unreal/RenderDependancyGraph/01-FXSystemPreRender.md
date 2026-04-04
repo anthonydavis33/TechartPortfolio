@@ -1,7 +1,6 @@
 ---
 tags:
   - niagara
-  - pre-render
 ---
 
 # Unreal Engine 5 Rendering Pipeline – FXSystemPreRender

@@ -1,8 +1,6 @@
 ---
 tags:
   - gbuffer
-  - nanite
-  - materials
 ---
 
 # Unreal Engine 5 Rendering Pipeline – BasePass (Opaque & Masked)

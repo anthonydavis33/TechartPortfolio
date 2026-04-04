@@ -1,7 +1,6 @@
 ---
 tags:
   - lighting
-  - stencil
 ---
 
 # Unreal Engine 5 Rendering Pipeline – CopyStencilToLightingChannels

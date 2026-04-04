@@ -1,9 +1,6 @@
 ---
 tags:
-  - early-z
-  - nanite
   - hzb
-  - wpo
 ---
 
 # Unreal Engine 5 Rendering Pipeline – PrePass (DepthPassParallel)

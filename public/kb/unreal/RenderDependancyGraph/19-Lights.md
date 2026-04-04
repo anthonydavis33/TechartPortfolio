@@ -1,7 +1,6 @@
 ---
 tags:
-  - shadows
-  - brdf
+  - lighting
 ---
 
 # Unreal Engine 5 Rendering Pipeline – Lights (Deferred Lighting)

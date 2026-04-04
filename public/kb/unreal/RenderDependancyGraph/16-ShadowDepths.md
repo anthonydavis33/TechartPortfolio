@@ -1,7 +1,6 @@
 ---
 tags:
   - shadows
-  - nanite
 ---
 
 # Unreal Engine 5 Rendering Pipeline – Shadow Depths

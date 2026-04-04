@@ -1,7 +1,6 @@
 ---
 tags:
   - translucency
-  - overdraw
 ---
 
 # Unreal Engine 5 Rendering Pipeline – Translucency

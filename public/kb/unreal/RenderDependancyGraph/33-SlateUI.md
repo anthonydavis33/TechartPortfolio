@@ -1,8 +1,6 @@
 ---
 tags:
   - slate
-  - ui
-  - umg
 ---
 
 # Unreal Engine 5 Rendering Pipeline – SlateUI (Title)

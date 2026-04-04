@@ -1,7 +1,6 @@
 ---
 tags:
   - nanite
-  - visibility-buffer
 ---
 
 # Unreal Engine 5 Rendering Pipeline – Nanite Visibility Buffer (Draw Geometry)

@@ -1,7 +1,6 @@
 ---
 tags:
-  - reflections
-  - specular
+  - lumen
 ---
 
 # Unreal Engine 5 Rendering Pipeline – Lumen Reflections

@@ -1,7 +1,6 @@
 ---
 tags:
   - gbuffer
-  - housekeeping
 ---
 
 # Unreal Engine 5 Rendering Pipeline – GBufferClear

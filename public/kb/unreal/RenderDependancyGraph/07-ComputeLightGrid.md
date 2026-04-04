@@ -1,8 +1,6 @@
 ---
 tags:
   - lighting
-  - light-grid
-  - deferred-rendering
 ---
 
 # Unreal Engine 5 Rendering Pipeline – Compute Light Grid

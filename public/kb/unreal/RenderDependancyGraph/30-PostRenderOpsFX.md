@@ -1,7 +1,6 @@
 ---
 tags:
   - niagara
-  - fx
 ---
 
 # Unreal Engine 5 Rendering Pipeline – PostRenderOpsFX

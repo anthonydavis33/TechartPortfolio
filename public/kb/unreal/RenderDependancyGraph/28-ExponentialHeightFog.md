@@ -1,7 +1,6 @@
 ---
 tags:
   - fog
-  - atmosphere
 ---
 
 # Unreal Engine 5 Rendering Pipeline – Exponential Height Fog

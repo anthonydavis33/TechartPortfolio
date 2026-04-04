@@ -1,7 +1,6 @@
 ---
 tags:
   - translucency
-  - lighting
 ---
 
 # Unreal Engine 5 Rendering Pipeline – FilterTranslucentVolume
